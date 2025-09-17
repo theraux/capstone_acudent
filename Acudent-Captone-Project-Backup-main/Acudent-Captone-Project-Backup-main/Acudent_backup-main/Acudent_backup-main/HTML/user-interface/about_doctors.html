@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/user-interface/about_doctors.css">
+    <link rel="stylesheet" href="../../CSS/user-interface/auth.css">
+    <link rel="stylesheet" href="../../CSS/user-interface/footer.css">
+    <link rel="stylesheet" href="../../CSS/user-interface/navbar.css">
+
+    <title>Doctors</title>
+</head>
+<body>
+
+    <!--Navigation Bar-->
+    <div id="Navbar"></div>
+    <script src="../../Javascript/user-interface/navbar.js"></script>
+    <!--Navigation Bar-->
+
+    <!--Sign In Popup Modal-->
+    <div id="popupModal"></div>
+    <script src="../../Javascript/user-interface/auth.js"></script>
+    <!--Sign In Popup Modal-->
+
+
+    <div class="banner">
+        <img src="Pictures/header.jpg" alt="Banner_Image">
+        <div class ="bottom-left"><b>A Perfect Smile Starts <br> with Great Dental Care</b></div>
+       <button id="Appointment">Schedule an Appointment</button>
+    </div>
+
+    <section class="Doctor_team">
+         <h2>Meet the Team</h2>
+    <div class="Team">
+        <div class="border">
+        <img src="Pictures/Doctor's Team.png" class="team-doctor" alt="Doctor's team pic">
+    </div>
+</div>
+    </section>
+
+   
+
+<section id="maja"> 
+  <div class="maja-container">
+    
+    <!-- Image with border -->
+    <div class="border-detail">
+      <img src="Pictures/Dr.Maja.jpg" alt="Picture of Mapru">
+    </div>
+
+    <!-- Text on clean background -->
+    <div class="details">
+      <h3>Dr. Maja Prudente</h3>
+      <p>Dr. Maja Prudente is the Owner and Chief Dentist of MAPRU Dental Clinic in Bacoor, Cavite, and 
+        also serves as a dentist at South Imus Specialists Hospital. She earned her Doctor of Dental Medicine 
+        degree from Centro Escolar University and previously completed a Bachelor’s Degree in Nursing Education at Manila Doctors College. 
+        With years of experience in both hospital and private practice, she is dedicated to providing quality dental care with a 
+        focus on patient comfort and overall oral health.
+        <br>
+        <br>
+        Beyond her academic background, Dr. Prudente has pursued specialized training in orthodontics, oral surgery, hospital dentistry, 
+        and dental sleep medicine, enhancing her ability to offer comprehensive treatments to her patients. 
+        Her commitment to continuous learning and compassionate care reflects in her work, making her a trusted professional in the dental community.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="renz">
+    <div class="renz-container">
+<div class="details-renz">
+    
+  <h3>Dr. Renz</h3>
+        <p>Dr. Maja Prudente is the Owner and Chief Dentist of MAPRU Dental Clinic in Bacoor, Cavite, and 
+        also serves as a dentist at South Imus Specialists Hospital. She earned her Doctor of Dental Medicine 
+        degree from Centro Escolar University and previously completed a Bachelor’s Degree in Nursing Education at Manila Doctors College. 
+        With years of experience in both hospital and private practice, she is dedicated to providing quality dental care with a 
+        focus on patient comfort and overall oral health.
+        <br>
+        <br>
+        Beyond her academic background, Dr. Prudente has pursued specialized training in orthodontics, oral surgery, hospital dentistry, 
+        and dental sleep medicine, enhancing her ability to offer comprehensive treatments to her patients. 
+        Her commitment to continuous learning and compassionate care reflects in her work, making her a trusted professional in the dental community.</p>
+    </div>
+
+    <div class="border-detail-renz">
+    <img src="Pictures/dr.Renz.jpg" alt="Picture of Renz">
+</div>
+  </div>
+
+</section>
+
+<section id="irish">
+    <div class="irish-container">
+        <div class="border-detail-irish">
+            <img src="Pictures/Dr.Ruth.jpg" alt="Picture of Irish">
+        </div>
+    <div class="details-irish">
+  <h3>Dr. Irish</h3>
+  <p>Dr. Maja Prudente is the Owner and Chief Dentist of MAPRU Dental Clinic in Bacoor, Cavite, and 
+        also serves as a dentist at South Imus Specialists Hospital. She earned her Doctor of Dental Medicine 
+        degree from Centro Escolar University and previously completed a Bachelor’s Degree in Nursing Education at Manila Doctors College. 
+        With years of experience in both hospital and private practice, she is dedicated to providing quality dental care with a 
+        focus on patient comfort and overall oral health.
+        <br>
+        <br>
+        Beyond her academic background, Dr. Prudente has pursued specialized training in orthodontics, oral surgery, hospital dentistry, 
+        and dental sleep medicine, enhancing her ability to offer comprehensive treatments to her patients. 
+        Her commitment to continuous learning and compassionate care reflects in her work, making her a trusted professional in the dental community.</p>
+    </div>
+  </div>
+</section>
+
+<section id="jano">
+    <div class="jano-container">
+<div class="details-jano">
+    
+  <h3>Dr. Renz</h3>
+        <p>Dr. Maja Prudente is the Owner and Chief Dentist of MAPRU Dental Clinic in Bacoor, Cavite, and 
+        also serves as a dentist at South Imus Specialists Hospital. She earned her Doctor of Dental Medicine 
+        degree from Centro Escolar University and previously completed a Bachelor’s Degree in Nursing Education at Manila Doctors College. 
+        With years of experience in both hospital and private practice, she is dedicated to providing quality dental care with a 
+        focus on patient comfort and overall oral health.
+        <br>
+        <br>
+        Beyond her academic background, Dr. Prudente has pursued specialized training in orthodontics, oral surgery, hospital dentistry, 
+        and dental sleep medicine, enhancing her ability to offer comprehensive treatments to her patients. 
+        Her commitment to continuous learning and compassionate care reflects in her work, making her a trusted professional in the dental community.</p>
+    </div>
+
+    <div class="border-detail-jano">
+    <img src="Pictures/dr.Renz.jpg" alt="Picture of Renz">
+</div>
+  </div>
+
+
+
+  
+
+
+    
+
+<script>
+let lastScrollTop = 0;
+const navbar = document.querySelector(".Navbar");
+
+window.addEventListener("scroll", function () {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // scrolling down -> slide whole Navbar up by top-nav height
+    navbar.style.transform = "translateY(-40px)";
+  } else {
+    if (currentScroll === 0) {
+      // back at top -> reset
+      navbar.style.transform = "translateY(0)";
+    }
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+</script>
+
+
+<!--Footer Section-->
+<div id="footer"></div>
+<script src="../../Javascript/user-interface/footer.js"></script>
+<!--Footer Section-->
+
+
+
+</body>
+</html>
