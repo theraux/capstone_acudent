@@ -176,86 +176,60 @@ padding-right: 5%; /* instead of 22.7% */
 
 
 /*start of first banner */
-.slideshow-container {
+.banner {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
-.slide {
-  display: none;
-  position: relative;
-}
 
-.slide img {
-  width: 100%;
-  height: auto;
-}
-
-.fade {
-  animation: fadeEffect 1.5s;
-}
-
-@keyframes fadeEffect {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
 
 
 .bottom-left-container {
-  background-color: rgba(255, 255, 255, 0.70); /* Semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.70); 
   padding: 20px;
   border-radius: 10px;
   max-width: 600px;
   height: 200px;
-  margin: 0 auto; /* Center the container */
-  position: absolute; /* Position it on the image */
-  top: 40%;
+  margin: 0 auto; 
+  position: absolute; 
+  top: 44%;
   left: 12%;
 
-  display: flex;          /* Flexbox layout */
-  flex-direction: column; /* Stack text above button */
-  justify-content: center;/* Center content vertically */
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;   /* text above button */
+  justify-content: center;
+  align-items: flex-start;  /* align text & button left */
+  gap: 15px;                /* spacing between text & button */
 }
 
-.bottom-left{
-    position: absolute;
-    top: 50%;
-    left: 5%; /* instead of 220px */
-
-    transform: translateY(-50%); /* Centers the text vertically */
-    color: #9E5B08;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
+.bottom-left {
+  color: #9E5B08;
+  font-size: 28px;
+  padding: 10px 20px;
+ border-radius: 5px;
 }
-#Appointment{
-    position: absolute;
-    top: 60%;
-    left: 5%; /* instead of 220px */
 
-    transform: translateY(-50%);
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    border: 1px solid #866442;
-    border-radius: 10px;
-    background-color: #9D724C;
-    color: white;
-    padding: 15px 20px;
-    width: 350px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    max-width: 90%; /* so it doesn’t overflow */
+#Appointment {
+  font-size: 1vw;
+  border: 1px solid #866442;
+  border-radius: 10px;
+  background-color: #9D724C;
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  width: 100%; /* Make the button full width inside the container */
 }
+
+
 #Appointment:hover {
-    background-color: #F5E3CD;
-    color: white;
+  background-color: #F5E3CD;
+  color: white;
 }
-
 
 
 /*end of first banner*/

@@ -31,10 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // ✅ Open modal + freeze navbar
-      openModalBtn?.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        document.body.classList.add('modal-open'); // freeze
-      });
+      openModalBtn?.addEventListener('click', (e) => {
+  e.preventDefault(); // ⛔ stop link from jumping to top
+  modal.style.display = 'flex';
+  document.body.classList.add('modal-open');
+});
 
       // ✅ Close modal + restore scroll
       closeModalBtn?.addEventListener('click', () => {

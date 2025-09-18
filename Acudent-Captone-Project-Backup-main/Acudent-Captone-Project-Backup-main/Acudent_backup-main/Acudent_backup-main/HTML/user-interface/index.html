@@ -249,12 +249,14 @@ function showSlides() {
    <h3>From routine checkups to advanced treatments, we’re here to keep your smile healthy and confident.</h3>
   <div class="Clinic-Slideshow">
   <img class="Clinic-Slide" src="../../Pictures/user-interface/dental-look/Clinic1.png" alt="Pictures of Clinic">
-  <img class="Clinic-Slide" src="../../Pictures/user-interface/dental-look/Clinic1.png" alt="Pictures of Clinic">
+  <img class="Clinic-Slide" src="../../Pictures/user-interface/dental-look/clinic2.jpg" alt="Pictures of Clinic">
   <img src="Pictures/" alt="">
   <img src="Pictures/" alt="">
 
   <button class="display-left" onclick="plusDivs(-1)">&#10094</button>
   <button class="display-right" onclick="plusDivs(1)">&#10095</button>
+  </div>
+  </section>
 
   <script>
     var slideIndex = 1;
@@ -275,8 +277,8 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
 }
   </script>
-  </div>
-</section>
+  
+
 
 <section class="Reviews">
   <h2>Real Smiles, Real Stories</h2>
@@ -322,26 +324,7 @@ function showDivs(n) {
     </div>
   </div>
 
-<script>
-let lastScrollTop = 0;
-const navbar = document.querySelector(".Navbar");
 
-window.addEventListener("scroll", function () {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScrollTop) {
-    // scrolling down -> slide whole Navbar up by top-nav height
-    navbar.style.transform = "translateY(-40px)";
-  } else {
-    if (currentScroll === 0) {
-      // back at top -> reset
-      navbar.style.transform = "translateY(0)";
-    }
-  }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-</script>
 
 <!--Footer Section-->
 <div id="footer"></div>

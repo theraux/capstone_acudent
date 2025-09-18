@@ -24,16 +24,18 @@
 
 
     <div class="banner">
-        <img src="Pictures/header.jpg" alt="Banner_Image">
-        <div class ="bottom-left"><b>A Perfect Smile Starts <br> with Great Dental Care</b></div>
+        <img src="../../Pictures/user-interface/banners-images-logo/doctor_about.jpg" alt="Banner_Image">
+        <div class="bottom-left-container">
+        <div class ="bottom-left">Caring hands begin with <br> passionate dental experts</div>
        <button id="Appointment">Schedule an Appointment</button>
+       </div>
     </div>
 
     <section class="Doctor_team">
          <h2>Meet the Team</h2>
     <div class="Team">
         <div class="border">
-        <img src="Pictures/Doctor's Team.png" class="team-doctor" alt="Doctor's team pic">
+        <img src="../../Pictures/user-interface/doctors/Doctor's Team.png" class="team-doctor" alt="Doctor's team pic">
     </div>
 </div>
     </section>
@@ -45,7 +47,7 @@
     
     <!-- Image with border -->
     <div class="border-detail">
-      <img src="Pictures/Dr.Maja.jpg" alt="Picture of Mapru">
+      <img src="../../Pictures/user-interface/doctors/Dr.Maja.jpg" alt="Picture of Mapru">
     </div>
 
     <!-- Text on clean background -->
@@ -85,7 +87,7 @@
     </div>
 
     <div class="border-detail-renz">
-    <img src="Pictures/dr.Renz.jpg" alt="Picture of Renz">
+    <img src="../../Pictures/user-interface/doctors/dr.Renz.jpg" alt="Picture of Renz">
 </div>
   </div>
 
@@ -94,7 +96,7 @@
 <section id="irish">
     <div class="irish-container">
         <div class="border-detail-irish">
-            <img src="Pictures/Dr.Ruth.jpg" alt="Picture of Irish">
+            <img src="../../Pictures/user-interface/doctors/Dr.Ruth.jpg" alt="Picture of Irish">
         </div>
     <div class="details-irish">
   <h3>Dr. Irish</h3>
@@ -136,31 +138,6 @@
 
 
 
-  
-
-
-    
-
-<script>
-let lastScrollTop = 0;
-const navbar = document.querySelector(".Navbar");
-
-window.addEventListener("scroll", function () {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScrollTop) {
-    // scrolling down -> slide whole Navbar up by top-nav height
-    navbar.style.transform = "translateY(-40px)";
-  } else {
-    if (currentScroll === 0) {
-      // back at top -> reset
-      navbar.style.transform = "translateY(0)";
-    }
-  }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-</script>
 
 
 <!--Footer Section-->

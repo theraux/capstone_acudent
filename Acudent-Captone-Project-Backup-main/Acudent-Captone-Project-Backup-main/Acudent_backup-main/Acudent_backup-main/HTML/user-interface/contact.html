@@ -74,29 +74,5 @@
     <!--Footer Section-->
 
 
-
-
-
-<script>
-let lastScrollTop = 0;
-const navbar = document.querySelector(".Navbar");
-
-window.addEventListener("scroll", function () {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScrollTop) {
-    // scrolling down -> slide whole Navbar up by top-nav height
-    navbar.style.transform = "translateY(-40px)";
-  } else {
-    if (currentScroll === 0) {
-      // back at top -> reset
-      navbar.style.transform = "translateY(0)";
-    }
-  }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-</script>
-
 </body>
 </html>
