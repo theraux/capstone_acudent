@@ -1,3 +1,4 @@
+/* ========== RESET & BASE STYLES ========== */
 * {
     margin: 0;
     padding: 0;
@@ -7,87 +8,95 @@ body {
     background-color: #ffffff;
     font-family: "Montserrat", sans-serif;
 }
-
 html, body {
     height: 100%;
 }
 
-.container {
-    display: flex; /* Allow sidebar and content side by side if needed */
-    height: 100vh;  /* Full viewport height */
-    width: 100%;    /* Full width */
+/* ========== LAYOUT ========== */
+.containerofall {
+    display: flex;
 }
 
+.sidebarcontainer {
+    width: 20%;  /* Sidebar width */
+}
+
+.content-container {
+    margin-top: 5%;  /* Leaves space below navbar */
+    width: 80%;
+    padding: 20px;
+}
+
+/* ========== SIDEBAR ========== */
 .sidebar {
     position: fixed;
-    margin-top: 144px;
+    top: 60px; /* Push below navbar (if navbar height = 60px) */
+    left: 0;
     background-color: #FEF3E7;
     border-radius: 5px;
-    width: 20%;         /* Fixed or relative width */
-    height: 100%;         /* Full height of container */
+    width: 20%;
+    height: calc(100vh - 60px);
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     border: 1px solid #000;
 }
-.profilepic-user{
-   text-align: center;
+
+/* ========== PROFILE PIC & USERNAME ========== */
+.profilepic-user {
+    text-align: center;
 }
 #profile-pic {
-    width: 100px;  /* You can adjust this based on your needs */
+    margin-top: 50%;
+    width: 100px;
     height: 100px;
-    border-radius: 50%;  /* Make the image round */
-    margin-bottom: 20px;  /* Space between image and username */
+    border-radius: 50%; /* Circle */
 }
-
 #username-display {
     margin-top: 40%;
-    margin-bottom: 50px;  /* Space between username and the nav items */
+    margin-bottom: 50px;
     font-size: 22px;
     text-align: center;
 }
 
+/* ========== NAVIGATION BUTTONS ========== */
 .nav-buttons {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    
-    
+    flex-direction: column; /* Stack vertically */
 }
 .nav-item {
-  width: 100%; /* make the container full width */
-  margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
-
 .nav-item button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 20px;             /* spacing between icon and text */
-  padding: 20px 40px;
-  margin-left: 5%;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-  background-color: #ffffff;
-  border: 1px solid #502C00;
-  transition: background 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 40px;
+    margin-left: 5%;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    background-color: #ffffff;
+    border: 1px solid #502C00;
+    transition: background 0.3s ease;
 }
-
 .nav-item button i {
-  font-size: 22px;
+    font-size: 22px;
 }
-
-/* Optional hover effect */
+/* Hover effect */
 .nav-item button:hover {
-    background-color: #F5E3CD ;
-  box-shadow: rgb(0, 0, 0);
+    background-color: #F5E3CD;
+    box-shadow: rgb(0, 0, 0);
 }
 
-.out{
+/* ========== LOGOUT BUTTON ========== */
+.out {
     font-size: 22px;
     margin-top: 30%;
     margin-left: 20%;
@@ -97,8 +106,6 @@ html, body {
     border-radius: 20px;
     cursor: pointer;
 }
-.out:hover{
-     background-color: #F5E3CD;
+.out:hover {
+    background-color: #F5E3CD;
 }
-
- 

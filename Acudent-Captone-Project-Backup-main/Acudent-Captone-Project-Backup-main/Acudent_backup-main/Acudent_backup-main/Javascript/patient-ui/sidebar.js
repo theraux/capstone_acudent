@@ -1,4 +1,4 @@
-// 1. Load the sidebar into #container
+// === 1. Load the sidebar into #container ===
 fetch('../../HTML/patient-ui/sidebar.html')
   .then(response => response.text())
   .then(html => {
@@ -11,9 +11,9 @@ fetch('../../HTML/patient-ui/sidebar.html')
     console.warn('Sidebar failed to load:', err);
   });
 
-// 2. Function to load content into #content
+// === 2. Function to load content into #content ===
 function loadPage(event, page, btn = null) {
-  event.preventDefault();
+  if (event) event.preventDefault();
 
   fetch(page)
     .then(response => response.text())
@@ -32,7 +32,7 @@ function loadPage(event, page, btn = null) {
     });
 }
 
-// 3. Attach event listeners dynamically
+// === 3. Attach event listeners dynamically ===
 function setupSidebarLinks() {
   document.querySelectorAll(".nav-item button").forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -44,6 +44,6 @@ function setupSidebarLinks() {
   // Load dashboard by default (first button)
   const firstBtn = document.querySelector(".nav-item button");
   if (firstBtn) {
-    loadPage(new Event("load"), firstBtn.getAttribute("data-page"), firstBtn);
+    loadPage(null, firstBtn.getAttribute("data-page"), firstBtn);
   }
 }
