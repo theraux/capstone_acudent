@@ -7,36 +7,25 @@
 body {
     background-color: #ffffff;
     font-family: "Montserrat", sans-serif;
+    padding-top: 8em;
 }
 html, body {
     height: 100%;
 }
 
-/* ========== LAYOUT ========== */
-.containerofall {
-    display: flex;
-}
 
-.sidebarcontainer {
-    width: 20%;  /* Sidebar width */
-}
 
-.content-container {
-    margin-top: 5%;  /* Leaves space below navbar */
-    width: 80%;
-    padding: 20px;
-}
+
 
 /* ========== SIDEBAR ========== */
 .sidebar {
     position: fixed;
-    top: 60px; /* Push below navbar (if navbar height = 60px) */
     left: 0;
     background-color: #FEF3E7;
     border-radius: 5px;
     width: 20%;
-    height: calc(100vh - 60px);
-    padding: 20px;
+    height: 100%;
+    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -44,68 +33,41 @@ html, body {
 }
 
 /* ========== PROFILE PIC & USERNAME ========== */
-.profilepic-user {
-    text-align: center;
+
+#username-display{
+    color: #502C00;
 }
-#profile-pic {
-    margin-top: 50%;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Circle */
-}
-#username-display {
-    margin-top: 40%;
-    margin-bottom: 50px;
-    font-size: 22px;
-    text-align: center;
+.nav-buttons .btn{
+    background-color: #ffffff;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 5vw, 3rem);
+    border: 1px solid #502C00;
+     font-size: clamp(0.8rem, 1.5vw, 1rem);
+     color: #502C00;
+  
 }
 
-/* ========== NAVIGATION BUTTONS ========== */
-.nav-buttons {
-    display: flex;
-    flex-direction: column; /* Stack vertically */
-}
-.nav-item {
-    width: 100%;
-    margin-bottom: 20px;
-}
-.nav-item button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 40px;
-    margin-left: 5%;
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: left;
-    background-color: #ffffff;
-    border: 1px solid #502C00;
-    transition: background 0.3s ease;
-}
-.nav-item button i {
-    font-size: 22px;
-}
-/* Hover effect */
-.nav-item button:hover {
-    background-color: #F5E3CD;
-    box-shadow: rgb(0, 0, 0);
+.nav-buttons .btn i {
+    margin-right: 1rem; /* Space between the icon and text */
+    white-space: nowrap;
+    color: #000;
+
 }
 
 /* ========== LOGOUT BUTTON ========== */
-.out {
-    font-size: 22px;
-    margin-top: 30%;
-    margin-left: 20%;
-    padding: 15px;
-    width: 60%;
-    border: 1px solid #502C00;
-    border-radius: 20px;
-    cursor: pointer;
-}
-.out:hover {
+.nav-buttons .btn:hover{
     background-color: #F5E3CD;
+}
+
+
+
+@media (max-width: 992px) {
+  .nav-buttons .btn {
+    padding: 0.75rem 1.25rem; /* shrink padding */
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-buttons .btn {
+    padding: 0.5rem 0.75rem; /* very small padding */
+  }
 }

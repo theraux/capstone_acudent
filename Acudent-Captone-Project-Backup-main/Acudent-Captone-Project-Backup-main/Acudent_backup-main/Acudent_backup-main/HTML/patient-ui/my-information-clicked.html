@@ -134,35 +134,37 @@
                     <label for="Validity">Validity/Expiration Date</label>
                     </div>
 
+                 <!-- HMO Card Upload -->
                     <div class="form-floating" style="grid-column: 2 / 3;">
-                    <input type="file" id="uploadHMO" accept="image/*" style="display: none;">
-                    <img id="preview" src="" alt="Image Preview" style="max-width: 200px; display:none; margin-top: 10px; border-radius: 8px;">
-                    <label for="uploadHMO" class="upload-label">
-                    Upload HMO card <i class="fas fa-camera"></i>
+                    <label class="upload-label" style="cursor: pointer; display: inline-block; padding: 10px; background-color: #f5f5f5; border-radius: 6px;">
+                        Upload HMO card <i class="fas fa-camera"></i>
+                        <input type="file" id="uploadHMO" accept="image/*" style="display: none;">
                     </label>
+                    <img id="preview" src="" alt="Image Preview" style="max-width: 200px; display: none; margin-top: 10px; border-radius: 8px;">
                     </div>
 
+                    <!-- Letter of Authorization Section -->
                     <div class="radio-group" style="grid-column: span 3;">
-                        <p>Do you have a letter of authorization?</p>
+                    <p>Do you have a letter of authorization?</p>
 
                     <div style="display: flex; align-items: center; gap: 1rem;">
                         <label style="display: flex; align-items: center; gap: 0.5rem;">
                         <input type="radio" name="hasAuthorization" value="yes">
-                            Yes
+                        Yes
                         </label>
 
-                            <!-- Upload input and label inline next to Yes -->
-                            <input type="file" id="uploadAuthorization" accept="image/*" style="display:none;">
-                            <label for="uploadAuthorization" class="upload-label" style="margin: 0; padding: 6px 12px; cursor: pointer;">
-                            Upload here <i class="fas fa-camera"></i>
-                            </label>
-                        </div>
-
-                        <label style="display: flex; align-items: center; gap: 0.5rem; margin-top: 10px;">
-                            <input type="radio" name="hasAuthorization" value="no">
-                            No
+                        <!-- Label wrapper for Authorization Upload -->
+                        <label class="upload-label" style="cursor: pointer; padding: 6px 12px; background-color: #f5f5f5; border-radius: 6px;">
+                        Upload here <i class="fas fa-camera"></i>
+                        <input type="file" id="uploadAuthorization" accept="image/*" style="display: none;">
                         </label>
-                        </div>
+                    </div>
+
+                    <label style="display: flex; align-items: center; gap: 0.5rem; margin-top: 10px;">
+                        <input type="radio" name="hasAuthorization" value="no">
+                        No
+                    </label>
+                    </div>
                     
                 <!---For Minor-->
                 <h2>For Patients Under 18 Years old</h2>
@@ -176,27 +178,43 @@
             
             
         </form>
+ </div>
+                <script>
+                const hmoInput = document.getElementById('uploadHMO');
+                const hmoPreview = document.getElementById('preview');
 
-        <script>
-  const input = document.getElementById('uploadImage');
-  const preview = document.getElementById('preview');
+                hmoInput.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        hmoPreview.src = e.target.result;
+                        hmoPreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                    }
+                });
 
-  input.addEventListener('change', function() {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
+                // Authorization upload preview (optional)
+                const authInput = document.getElementById('uploadAuthorization');
+                const authPreview = document.getElementById('authPreview');
 
-      reader.onload = function(e) {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-      }
+                authInput.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        authPreview.src = e.target.result;
+                        authPreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                    }
+                });
+                </script>
 
-      reader.readAsDataURL(file);
-    }
-  });
-</script>
 
 
-    </div>
+
+   
    
 </div>

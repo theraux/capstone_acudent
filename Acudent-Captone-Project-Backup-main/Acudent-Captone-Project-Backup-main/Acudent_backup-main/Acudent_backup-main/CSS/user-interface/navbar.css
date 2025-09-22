@@ -1,33 +1,55 @@
-/* ===== Top bar (unchanged) ===== */
+:root {
+  --color-primary: #F5E3CD;   /* light beige */
+  --color-secondary: #FEF3E7; /* softer background */
+  --color-tertiary: #9E5B08;  /* accent brown */
+  --color-text: #3a1d02;      /* main text */
+}
+
+/* ===== Top bar ===== */
 .top-nav {
-  height: 2.5rem;               /* ~40px */
-  background-color: #F5E3CD;
-  color: #000;
+  height: 2.5rem;               
+  background-color: var(--color-primary);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   font-size: 0.9rem;
   padding: 0 1rem;
   padding-inline: clamp(0.5rem, 2vw, 1rem);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: top 0.3s ease; /* smooth slide */
+  z-index: 1031;
 }
 
-/* ===== Bottom nav background ===== */
 .bottomNav {
-  background-color: #FEF3E7;
-  box-shadow: 0 0.125rem 0.375rem rgba(0,0,0,0.08);
+  position: fixed;
+  top: 2.5rem; /* matches .top-nav height */
+  width: 100%;
+  background: transparent;
+  transition: top 0.3s ease, background 0.3s ease;
 }
 
-/* ===== Bottom container: center the group ===== */
+/* background when scrolled */
+.bottomNav.scrolled {
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ===== Bottom container ===== */
 .bottomNav-container {
   display: flex;
-  justify-content: center;   /* <-- centers the nav-center group in the page */
+  justify-content: center;   
   align-items: center;
   padding: 0.5rem 1rem;
   max-width: 100%;
   margin: 0 auto;
 }
 
-/* The centered group containing logo + menu */
 .nav-center {
   display: flex;
   align-items: center;
@@ -45,88 +67,130 @@
 }
 
 .logo-img {
-  max-width: 5rem;           /* responsive (≈80px) */
+  max-width: 5rem;           
   height: auto;
   display: block;
   margin-right: 0.6rem;
 }
 
 .logo-text h3 {
-  font-size: clamp(1.2rem, 2vw, 1.6rem); /* fluid */
-  color: #866442;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--color-tertiary);
   margin: 0;
   line-height: 1;
 }
 
 .logo-text h5 {
   font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-  color: #866442;
-   display: inline;         
+  color: var(--color-tertiary);
   white-space: nowrap;     
-  vertical-align: middle;  
-  /* if you want "Dental Clinic" on one line, add white-space: nowrap; */
 }
 
-
-/* ===== Inline menu (desktop) ===== */
+/* ===== Inline menu ===== */
 .inline-nav {
   display: flex;
   align-items: center;
-  gap: 1rem;                 /* space among links */
+  gap: 1rem;
   margin: 0;
   padding: 0;
 }
 
 .inline-nav li { list-style: none; }
 
+/* Default nav links */
 .inline-nav .nav-link {
+  position: relative;
   text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  padding: 0.5rem 0.75rem;
+  color: var(--color-text);
+  padding: 0.1rem 0.11rem;
   font-size: clamp(0.8rem, .75vw, 1rem);
-  transition: background 0.2s;
+  transition: color 0.3s ease;
+  border-radius: 0;
+  margin: 0.1rem 0.75rem;;
+}
+/* Underline hover only for normal links (exclude Services + Sign In) */
+.inline-nav .nav-link:not(.signin):not(.dropdown-toggle)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-tertiary);
+  transition: width 0.3s ease;
 }
 
-.inline-nav .nav-link:hover,
-.inline-nav .nav-link:focus {
-  background-color: #F5E3CD;
-  border-radius: 0.25rem;
+.inline-nav .nav-link:not(.signin):not(.dropdown-toggle):hover::after,
+.inline-nav .nav-link:not(.signin):not(.dropdown-toggle):focus::after {
+  width: 100%;
+}
+
+
+/* ===== Sign In button ===== */
+.inline-nav .nav-link.signin {
+  background-color: var(--color-primary); /* beige */
+  color: var(--color-text);               /* dark brown text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;                  /* optional rounded look */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* subtle shadow */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+.inline-nav .nav-link.signin:hover {
+  background-color: var(--color-tertiary);
+  text-decoration: none;
+}
+
+/* ===== Dropdown toggle (Services) ===== */
+.inline-nav .dropdown-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.4em;
+  vertical-align: middle;
+  border-top: 0.35em solid var(--color-tertiary); /* caret */
+  border-right: 0.35em solid transparent;
+  border-left: 0.35em solid transparent;
+  border-bottom: 0;
+  transition: transform 0.3s ease;
 }
 
 /* ===== Dropdown styling ===== */
 .dropdown-menu {
-  background-color: #F5E3CD;
+  background-color: var(--color-primary);
   box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
   min-width: 12rem;
 }
 
 .dropdown-item {
   padding: 0.6rem 0.9rem;
-  font-weight: 500;
+  color: var(--color-text);
 }
 
-/* ===== Navbar toggler look ===== */
+/* ===== Navbar toggler ===== */
 .navbar-toggler {
   padding: 0.25rem 0.5rem;
 }
 
 .navbar-toggler-icon {
-  width: 2rem;   /* make it bigger */
+  width: 2rem;
   height: 2rem;
-  background-size: 100% 100%; /* ensure SVG fills the box */
-  /* dark hamburger */
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280,0,0,0.7%29' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28134,100,66,0.9%29' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-/* ===== Responsive behavior ===== */
-/* On small screens: collapse shows stacked, centered */
+/* ===== Responsive ===== */
 @media (max-width: 767.98px) {
   .nav-center {
-    /* let collapse and toggler stack vertically if needed */
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem; /* smaller gap on mobile */
+    gap: 1rem;
   }
 
   .collapse.navbar-collapse {
@@ -145,20 +209,115 @@
   }
 
   .logo-img {
-    max-width: 4.25rem; /* a little smaller on mobile */
+    max-width: 4.25rem;
     margin-right: 0.5rem;
   }
 }
 
-
-
-/* ===== Modal fix when open ===== */
+/* ===== Modal fix ===== */
 body.modal-open {
   overflow: hidden;
 }
 
-
 .open-time-group {
-    margin-right: clamp(1rem, 7.5vw, 20rem); 
-  /* or */
+  margin-right: clamp(1rem, 7.5vw, 20rem); 
+}
+
+#openModal {
+  border-radius: 2rem;
+}
+/* Show dropdown on hover for Services */
+.inline-nav .Services:hover .dropdown-menu {
+  display: block;
+  margin-top: 0.5rem; /* small gap below Services */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* === Services dropdown hover with smooth fade === */
+.dropdown-menu {
+  display: block;           /* keep it in flow for transition */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px); /* slide down effect */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.inline-nav .Services:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* slide back to place */
+}
+
+/* Shift Services dropdown toward Contact */
+
+/* Mobile dropdown should overlap Sign In */
+@media (max-width: 767.98px) {
+  .collapse.navbar-collapse {
+    display: flex !important;       /* ensure flexbox */
+    flex-direction: column;         /* stack vertically */
+    align-items: center;            /* center horizontally */
+    justify-content: flex-start;    /* keep top-aligned when opening */
+    width: 100%;
+    padding-top: 0.5rem;
+    transition: max-height 0.4s ease; /* smooth dropdown feel */
+    overflow: hidden;
+    max-height: 0;                  /* collapsed */
+  }
+
+  .collapse.navbar-collapse.show {
+    max-height: 500px; /* big enough for your items */
+  }
+
+  .inline-nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .inline-nav .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+}
+
+
+/* Desktop hover */
+@media (min-width: 768px) {
+  .inline-nav .Services:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1050; /* makes sure it’s above other items */
+  }
+}
+
+/* Mobile click only (disable hover overlay) */
+@media (max-width: 767.98px) {
+  /* kill the hover effect */
+  .inline-nav .Services:hover .dropdown-menu {
+    display: none !important;
+  }
+
+  /* Bootstrap click toggle */
+  .dropdown-menu {
+    position: static;  /* stacks nicely inside collapse */
+    display: none;     /* hidden by default */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none;
+    z-index: 1050;     /* ensure it’s above other links */
+  }
+
+  .dropdown-menu.show {
+    display: block; /* shown when clicked */
+  }
 }

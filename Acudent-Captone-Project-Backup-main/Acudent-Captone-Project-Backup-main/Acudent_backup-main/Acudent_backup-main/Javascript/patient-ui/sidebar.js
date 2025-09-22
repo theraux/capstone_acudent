@@ -22,7 +22,7 @@ function loadPage(event, page, btn = null) {
 
       // Highlight active button
       if (btn) {
-        document.querySelectorAll(".nav-item button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll("button[data-page]").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
       }
     })
@@ -34,7 +34,7 @@ function loadPage(event, page, btn = null) {
 
 // === 3. Attach event listeners dynamically ===
 function setupSidebarLinks() {
-  document.querySelectorAll(".nav-item button").forEach(btn => {
+  document.querySelectorAll("button[data-page]").forEach(btn => {
     btn.addEventListener("click", (e) => {
       const page = btn.getAttribute("data-page");
       if (page) loadPage(e, page, btn);
@@ -42,7 +42,7 @@ function setupSidebarLinks() {
   });
 
   // Load dashboard by default (first button)
-  const firstBtn = document.querySelector(".nav-item button");
+  const firstBtn = document.querySelector("button[data-page]");
   if (firstBtn) {
     loadPage(null, firstBtn.getAttribute("data-page"), firstBtn);
   }

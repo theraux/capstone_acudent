@@ -1,73 +1,31 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    background-color: #ffffff;
-    font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
 }
 
-html, body {
-  height: 100%;
-}
-
-/* Flex layout to push content to top */
-body {
-  display: flex;
-  flex-direction: column;
-}
-.containerofall {
-  display: flex;
-}
-
-
-.content-container {
-    margin-left: 20%;       /* same width as sidebar */
-    width: 80%;             /* remaining width */
-    padding: 20px;
-    min-height: calc(100vh - 60px);
-}
-
-
-
-/* Container for dashboard */
+/* Dashboard wrapper */
 .dashboard-container {
-  position: absolute;
-  padding: 40px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 40%;
-  
-}
-.dashboard-container h2{
-  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
 }
 
-/* Grid layout */
-.container-dashboard {
+.row.justify-content-center {
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  justify-content: center; /* centers boxes horizontally */
+  flex-wrap: wrap; /* wraps boxes on small screens */
+  gap: 20px; /* optional spacing between boxes */
 }
 
-/* Box styling */
 .box {
   background-color: #F5E3CD;
   padding: 40px;
   border-radius: 10px;
-  flex: 1;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-
-.box span {
-  display: block;
-  font-size: 32px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #502C00;
-}
-
-

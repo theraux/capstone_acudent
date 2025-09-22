@@ -1,13 +1,22 @@
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== Root Colors ===== */
+:root {
+  --color-primary: #F5E3CD;   /* light beige */
+  --color-secondary: #FEF3E7; /* softer background */
+  --color-tertiary: #9E5B08;  /* accent brown */
+  --color-text: #3a1d02;      /* main text */
 }
+
+/* ===== Global Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: #ffffff;
-    font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  font-family: "Montserrat", sans-serif;
 }
 
 html, body {
@@ -15,13 +24,10 @@ html, body {
   overflow-x: hidden; /* Prevent sideways scroll */
 }
 
-/*start of first banner */
 /* ===== Slideshow Container ===== */
 .slideshow-container {
   position: relative;
-  width: 100%;
-  height: 85vh;              /* fixed height for consistency */
-  margin-top: 100px;
+  height: 95vh;
   overflow: hidden;
 }
 
@@ -32,15 +38,28 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;                /* start invisible */
-  transition: opacity 1.5s ease-in-out; /* smooth fade */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
   z-index: 0;
 }
 
+/* Background image */
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* keeps image ratio without stretching */
+  object-fit: cover;
+}
+
+/* ===== Overlay for text readability ===== */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 1; /* above image, below text */
 }
 
 /* ===== Active Slide ===== */
@@ -49,55 +68,98 @@ html, body {
   z-index: 1;
 }
 
-
+/* ===== Bottom Left Text and Button ===== */
 .bottom-left-container {
-  background-color: rgba(255, 255, 255, 0.70); /* Semi-transparent white background */
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  height: 200px;
-  margin: 0 auto; /* Center the container */
-  position: absolute; /* Position it on the image */
-  top: 40%;
-  left: 12%;
-
-  display: flex;          /* Flexbox layout */
-  flex-direction: column; /* Stack text above button */
-  justify-content: center;/* Center content vertically */
-  align-items: flex-start;
-}
-
-.bottom-left {
-  color: #9E5B08; /* Text color */
-  font-size: 28px;
-  padding: 10px 20px;
-  border-radius: 5px;
+  position: absolute;
+  bottom: 25%;          /* adjust vertical position */
+  left: 20%;            /* center horizontally */
+  transform: translateX(-50%);
   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;            /* above overlay */
+  padding: 0;
 }
 
+.bottom-left h2 {
+  color: var(--color-tertiary); /* light beige text */
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.bottom-left p {
+  color: var(--color-tertiary); /* light beige text */
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ===== Appointment Button ===== */
 #Appointment {
-  font-size: 1vw;
-  border: 1px solid #866442;
-  border-radius: 10px;
-  background-color: #9D724C;
-  color: white;
+  font-size: 1rem;
+  border: 1px solid var(--color-secondary); /* accent brown border */
+  border-radius: 2rem;
+  background-color: var(--color-tertiary);
+  Color: var(--color-secondary);
   padding: 15px 20px;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  margin-top: 10px; /* Add some space between the text and button */
+  margin-top: 15px;
   display: block;
-  width: 100%; /* Make the button full width inside the container */
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #Appointment:hover {
-  background-color: #F5E3CD;
+  background-color: var(--color-primary); /* light beige on hover */
   color: white;
 }
 
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 575.98px) {
+  .bottom-left-container {
+    bottom: 15%;
+    max-width: 90%;
+    padding: 0 10px;
+  }
+  .bottom-left h1 { font-size: 1.5rem; }
+  .bottom-left p { font-size: 0.9rem; }
+  #Appointment { font-size: 0.8rem; padding: 10px 15px; }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .bottom-left-container {
+    bottom: 12%;
+    max-width: 80%;
+  }
+  .bottom-left h1 { font-size: 1.8rem; }
+  .bottom-left p { font-size: 0.95rem; }
+  #Appointment { font-size: 0.9rem; padding: 12px 18px; }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .bottom-left-container { max-width: 70%; }
+  .bottom-left h1 { font-size: 2rem; }
+  .bottom-left p { font-size: 1rem; }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .bottom-left-container { max-width: 60%; }
+  .bottom-left h1 { font-size: 2.1rem; }
+  .bottom-left p { font-size: 1rem; }
+}
+
+@media (min-width: 1200px) {
+  .bottom-left-container { max-width: 600px; }
+  .bottom-left h1 { font-size: 2.2rem; }
+  .bottom-left p { font-size: 1rem; }
+}
 
 
-/*end of first banner*/
 
 /*start second banner*/
 .about-section {
@@ -142,78 +204,84 @@ html, body {
 /*end of second banner*/
 
 /* Why Choose Us Section */
+/* Base (extra small - phones <576px) */
 .why-choose {
-    padding: 60px 10%;
-    background-color: #ffffff; 
+    padding: 40px 5%;
     text-align: center;
-    font-family: Arial, sans-serif;
-    border-top: 2px solid #F5E3CD;
-    border-bottom: 2px solid #F5E3CD;
-
-}
-
-.why-choose img{
-    max-width: 150px;
-    height: auto;
-    margin-left: 80px;
 }
 
 .why-choose h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
-    color: #502C00;
-    font-weight: bold;
-    
+    font-size: 20px;
 }
 
-/* Grid layout */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
-}
-
-.grid-item {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
-}
-
-.grid-item:hover {
-    background-color: #FEF3E7;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-    transition: background 0.5s;
-}
-
-.grid-item h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #502C00;
-    font-weight: bold;
-    text-align: center;
-}
-
-.grid-item p {
-    font-size: 15px;
-    color: #502C00;
-    line-height: 1.6;
-    text-align: center;
-}
-
-/* Retained paragraph styling */
 .why-choose-text {
-    max-width: 1350px;
-    margin: 0 auto;
-    font-size: 16px;
-    color: #502C00;
-    line-height: 1.8;
-    text-align: center;
+    font-size: 14px;
 }
+
+/* Small screens (≥576px) */
+@media (min-width: 576px) {
+  .why-choose {
+      padding: 50px 8%;
+  }
+
+  .why-choose h2 {
+      font-size: 22px;
+  }
+
+  .why-choose-text {
+      font-size: 15px;
+  }
+}
+
+/* Medium screens (≥768px) */
+@media (min-width: 768px) {
+  .why-choose {
+      padding: 60px 10%;
+  }
+
+  .why-choose h2 {
+      font-size: 26px;
+  }
+
+  .why-choose-text {
+      font-size: 16px;
+  }
+}
+
+/* Large screens (≥992px) */
+@media (min-width: 992px) {
+  .why-choose h2 {
+      font-size: 28px;
+  }
+
+  .why-choose-text {
+      font-size: 17px;
+  }
+}
+
+/* Extra large (≥1200px) */
+@media (min-width: 1200px) {
+  .why-choose h2 {
+      font-size: 30px;
+  }
+
+  .why-choose-text {
+      font-size: 18px;
+  }
+}
+
+/* Extra extra large (≥1400px) */
+@media (min-width: 1400px) {
+  .why-choose h2 {
+      font-size: 32px;
+  }
+
+  .why-choose-text {
+      font-size: 19px;
+      max-width: 1350px;
+  }
+}
+
 /*end of Why choose us Section*/
 
 /* Doctors Section */
