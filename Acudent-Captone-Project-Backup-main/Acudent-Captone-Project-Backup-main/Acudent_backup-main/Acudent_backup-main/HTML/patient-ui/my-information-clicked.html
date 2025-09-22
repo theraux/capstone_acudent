@@ -1,220 +1,256 @@
-<div class="personal-information-container">
-    <h2>My information</h2>
-    <div class="user-info">
-        <img id="profile-pic" class="profile-pic" src="" alt="Profile Picture">
-        <h3 id="name-display">Dracy</h3>
-        <h2 id="user-name-display">@Dracy</h2>
-        <h3 id="password-display"><span id="password-mask">****</span></h3>
-        <h3 id="patient-id-display">Patient ID: <span id="patient-id"></span></h3>
-    </div>
+<div class="personal-information-container container py-4">
+    <h2 class="mb-4">Personal Information</h2>
+    <div class="row mb-4">
+        <!-- User Info Section -->
+        <div class="col-12 text-center">
+            <img id="profile-pic" class="profile-pic img-fluid rounded-circle" src="" alt="Profile Picture">
+            <h3 id="name-display">Dracy</h3>
+            <h4 id="user-name-display">@Dracy</h4>
+            <h5 id="password-display"><span id="password-mask">****</span></h5>
+            <h5 id="patient-id-display">Patient ID: <span id="patient-id"></span></h5>
+        </div>
 
-    <div class="information-form">
-       <div class="personal-details">
-              <h2>Personal Details</h2>
-        <form>
-            <div class="form-floating">
-                <input type="LastName" id="LastName" class="form-control" placeholder="Last Name" required>
-                <label for="LastName">Last Name<span class="required">*</span></label>
-            </div>
-             <div class="form-floating">
-                <input type="FirstName" id="FirstName" class="form-control" placeholder="First Name"required>
-                <label for="LastName">First Name<span class="required">*</span></label>
-            </div>
-             <div class="form-floating">
-                <input type="MiddleInitial" id="MiddleInitial" class="form-control" placeholder="Middle Initial" maxlength="1">
-                <label for="MiddleInitial">Middle Initial</label>
-            </div>
+        <!-- Personal Info Form -->
+        <div class="col-12 col-md-8 d-flex justify-content-center form-column">
+            <div class="information-form">
+                <div class="personal-details mb-4">
+                    <h3>Personal Details</h3>
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="LastName" class="form-control" placeholder="Last Name"  name="LastName" required>
+                                    <label for="LastName">Last Name<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="FirstName" class="form-control" placeholder="First Name" name="FirstName" required>
+                                    <label for="FirstName">First Name<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="MiddleInitial" class="form-control" placeholder="Middle Initial" name="MiddleInitial" maxlength="1">
+                                    <label for="MiddleInitial">Middle Initial</label>
+                                </div>
+                            </div>
+                        </div>
 
-            <!--Second Row-->
-    
-            <div class="form-floating">
-        <!-- Gender Dropdown inside form-floating -->
-                <select id="Gender" name="Gender" class="form-control" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-                <label for="Gender">Gender <span class="required">*</span>
-                </label>
-            </div>
+                        <!-- Second Row -->
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <select id="Gender" name="Gender" class="form-control" name="Gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <label for="Gender">Gender<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" id="Birthdate" class="form-control" name="Birthdate" required>
+                                    <label for="Birthdate">Birthdate<span class="required">*</span></label>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-floating">
-                    <input type="date" id="Birthdate"  class="form-control">
-                    <label for="Birthdate">Birthdate<span class="required">*</span></label>
-                </div>
+                        <!-- Third Row -->
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="Age" class="form-control" placeholder="Age" name="Age" required>
+                                    <label for="Age">Age<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="Nationality" class="form-control" placeholder="Nationality" name="Nationality">
+                                    <label for="Nationality">Nationality</label>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-floating">
-                    <input type="Age" id="Age" class="form-control" placeholder="Age" required>
-                    <label for="Age">Age<span class="required">*</span></label>
-                </div>
+                        <h3>Contact Information</h3>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" id="PhoneNumber" class="form-control" placeholder="Phone Number" name="PhoneNumber" required>
+                                    <label for="PhoneNumber">Phone Number<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" id="Email" class="form-control" placeholder="Email" name="Email" required>
+                                    <label for="Email">Email<span class="required">*</span></label>
+                                </div>
+                            </div>
 
-                <!--Third Row-->
+                        <div class="row mt-3">
+                             <div class="col-12 col-md-12">
+                                <div class="form-floating">
+                                    <input type="text" id="Address" class="form-control" placeholder="Address" name="Address" required>
+                                    <label for="Address">Address<span class="required">*</span></label>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-floating">
-                    <input type="Nationality" id="Nationality" class="form-control" placeholder="Nationality">
-                    <label for="Nationality">Nationality</label>
-                </div>
+                        <hr>
 
-                <h2>Contact Information</h2>
+                        <h3>Medical History</h3>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="CurrentMedications" class="form-control" placeholder="Current Medications" name="CurrentMedications">
+                                    <label for="CurrentMedications">Current Medications</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="PastSurgeries" class="form-control" placeholder="Past Surgeries/Hospitalizations" name="PastSurgeries">
+                                    <label for="PastSurgeries">Past Surgeries/Hospitalizations</label>
+                                </div>
+                            </div>
+                         </div>
 
-                <div class="form-floating">
-                    <input type="tel" id="PhoneNumber" class="form-control" placeholder="PhoneNumber" required>
-                    <label for="PhoneNumber">Phone Number<span class="required">*</span></label>
-                </div>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="Allergies" class="form-control" placeholder="Allergies" name="Allergies">
+                                    <label for="Allergies">Allergies</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="Menstruation" class="form-control" placeholder="Menstruation" name="Menstruation">
+                                    <label for="Menstruation">Menstruation</label>
+                                </div>
+                            </div>
+                        </div>
+                        
 
-                <div class="form-floating">
-                    <input type="email" id="Email" class="form-control" placeholder="Email" required>
-                    <label for="Email">Email <span class="required">*</span></label>
-                </div>
+                        <h3>Medical Conditions</h3>
+                        <div class="col-12 col-md-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="MedicalConditions" class="form-control" placeholder="Medical Conditions" name="MedicalConditions">
+                            <label for="MedicalConditions">Medical Conditions</label>
+                        </div>
+                        </div>
 
-                <div class="form-floating">
-                    <input type="text" id="Address" class="form-control" placeholder="Address" required>
-                    <label for="Address">Address<span class="required">*</span></label>
-                </div>
+                        <h3>HMO Information</h3>
+                        <div class="form-group mb-3">
+                            <p>Are you covered by an HMO?</p>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="hasHMO" value="yes"> Yes
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="hasHMO" value="no"> No
+                            </div>
+                        </div>
 
-                <!--Medical History-->
-                <hr>
-                <h2>Medical History</h2>
-                <div class="medical-history">
-                <div class="form-floating">
-                    <input type="text" id="CurrentMedications" class="form-control" placeholder="Current Medications">
-                    <label for="CurrentMedications">Current Medications</label>
-                </div>
+                        <h6>If yes, fill out the following</h6>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="HMOProvider" class="form-control" placeholder="HMO Provider" name="HMOProvider">
+                                    <label for="HMOProvider">HMO Provider</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="MembershipID" class="form-control" placeholder="Membership ID No." name="MembershipID">
+                                    <label for="MembershipID">Membership ID No.</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating">
+                                    <input type="text" id="PlanType" class="form-control" placeholder="Plan Type/Coverage Level" name="PlanType">
+                                    <label for="PlanType">Plan Type/Coverage Level</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="row mb-3">
+                                <!-- Validity / Expiration -->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-floating mb-3">
+                                    <input type="text" id="Validity" class="form-control" placeholder="Validity/Expiration Date">
+                                    <label for="Validity">Validity/Expiration Date</label>
+                                    </div>
+                                </div>
 
-                <div class="form-floating">
-                    <input type="text" id="PastSurgeries" class="form-control" placeholder="Past Surgeries/Hospitilization">
-                    <label for="PastSurgeries"> Past Surgeries/Hospitilization</label>
-                </div>
+                                <!-- Upload HMO Card -->
+                                <div class="col-12 col-md-6">
+                                    <label class="upload-label" style="cursor: pointer; padding: 0.75rem; background-color: #f5f5f5; border-radius: 6px; display:inline-block; ">
+                                    Upload HMO Card <i class="fas fa-camera"></i>
+                                    <input type="file" id="uploadHMO" accept="image/*" style="display: none;">
+                                    </label>
+                                    <img id="preview" src="" alt="Image Preview" class="img-fluid ms-2" style="display: none; max-height: 3rem;">
+                                </div>
+                            </div>
 
-                   <div class="form-floating">
-                    <input type="text" id="Allergies" class="form-control" placeholder="Allergies">
-                    <label for="Allergies"> Allergies</label>
-                </div>
-
-                <div class="form-floating">
-                    <input type="text" id="Menstruation" class="form-control" placeholder="Menstruation">
-                    <label for="Allergies">Menstruation</label>
-                </div>
-
-                <h2>Medical Conditions</h2>
-                <div class="form-floating">
-                    <input type="text" id="MedicalConditions" class="form-control" placeholder="Medical Condition">
-                    <label for="Medical Condition">Medical Condition</label>
-                </div>
-
-                <h2>HMO information</h2>
-                    <div class="radio-group" style="grid-column: span 3;">
-                        <p>Are you covered by an HMO?</p>
-                        <label>
-                        <input type="radio" name="hasHMO" value="yes"> Yes
-                        </label>
-
-                      <label>
-                        <input type="radio" name="hasHMO" value="no"> No
-                        </label>
-                </div>
-                <h4>(If yes, fill out the following)</h4>
-                    <div class="form-floating" style="grid-template-columns: 3 1fr;">
-                    <input type="text" id="HMOProvider" class="form-control" placeholder="HMO Provider">
-                    <label for="HMOProvider">HMO Provider</label>
-                    </div>
-
-                    <div class="form-floating" style="grid-template-columns: 3 1fr;">
-                    <input type="text" id="MembershipID" class="form-control" placeholder="Membership ID No.">
-                    <label for="MembershipID">Membership ID No.</label>
-                    </div>
-
-                    <div class="form-floating" style="grid-template-columns: 3 1fr;">
-                    <input type="text" id="PlanType" class="form-control" placeholder="Plan Type/Coverage Level">
-                    <label for="PlanType">Plan Type/Coverage Level</label>
-                    </div>
-
-                    <div class="form-floating" style="grid-template-columns: 2 1fr;">
-                    <input type="text" id="Validity" class="form-control" placeholder="Validity/Expiration Date">
-                    <label for="Validity">Validity/Expiration Date</label>
-                    </div>
-
-                 <!-- HMO Card Upload -->
-                    <div class="form-floating" style="grid-column: 2 / 3;">
-                    <label class="upload-label" style="cursor: pointer; display: inline-block; padding: 10px; background-color: #f5f5f5; border-radius: 6px;">
-                        Upload HMO card <i class="fas fa-camera"></i>
-                        <input type="file" id="uploadHMO" accept="image/*" style="display: none;">
-                    </label>
-                    <img id="preview" src="" alt="Image Preview" style="max-width: 200px; display: none; margin-top: 10px; border-radius: 8px;">
-                    </div>
-
-                    <!-- Letter of Authorization Section -->
-                    <div class="radio-group" style="grid-column: span 3;">
-                    <p>Do you have a letter of authorization?</p>
-
-                    <div style="display: flex; align-items: center; gap: 1rem;">
-                        <label style="display: flex; align-items: center; gap: 0.5rem;">
-                        <input type="radio" name="hasAuthorization" value="yes">
-                        Yes
-                        </label>
-
-                        <!-- Label wrapper for Authorization Upload -->
-                        <label class="upload-label" style="cursor: pointer; padding: 6px 12px; background-color: #f5f5f5; border-radius: 6px;">
-                        Upload here <i class="fas fa-camera"></i>
-                        <input type="file" id="uploadAuthorization" accept="image/*" style="display: none;">
-                        </label>
-                    </div>
-
-                    <label style="display: flex; align-items: center; gap: 0.5rem; margin-top: 10px;">
-                        <input type="radio" name="hasAuthorization" value="no">
-                        No
-                    </label>
-                    </div>
                     
-                <!---For Minor-->
-                <h2>For Patients Under 18 Years old</h2>
-                <div class="form-floating" style="grid-template-columns: 3 1fr;">
-                    <input type="text" id="HMOProvider" class="form-control" placeholder="HMO Provider">
-                    <label for="HMOProvider">HMO Provider</label>
+
+                        <!-- Authorization upload -->
+                        <h4>Letter of Authorization</h4>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input mt-3" name="hasAuthorization" value="yes"> Yes
+                            <label class="upload-label ms-2" style="cursor: pointer; padding: 0.75rem; background-color: #f5f5f5; border-radius: 6px; display: inline-block;">
+                                Upload here <i class="fas fa-camera"></i>
+                                <input type="file" id="uploadAuthorization" accept="image/*" style="display: none; max-height: 3rem;">
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="radio" class="form-check-input" name="hasAuthorization" value="no"> No
+                        </div>
+
+                        <h3>For Patients Under 18 Years Old</h3>
+                        <div class="row mb-3">
+                        <div class="col-12 col-md-4">
+                        <div class="form-floating">
+                            <input type="text" id="MLastName" class="form-control" placeholder="Last Name" name="MLastName">
+                            <label for="MLastName">Last Name</label>
+                        </div>
+                        </div>
+                    
+                        <div class="col-12 col-md-4">
+                            <div class="form-floating">
+                                <input type="text" id="MFirsName" class="form-control" placeholder="First Name" name="MLastName">
+                                <label for="MFirsName">First Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="form-floating">
+                                <input type="tel" id="MContactNum" class="form-control" placeholder="Contact Number" name="MContactNum">
+                                <label for="MContactNum">Contact Number</label>
+                            </div>
+                            </div>
                     </div>
 
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating">
+                                <input type="text" id="RltoPatient" class="form-control" placeholder="Relationship to the patient" name="RltoPatient">
+                                <label for="RltoPatient">Relationship to the patient</label>
+                            </div>
+                        </div>
 
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating">
+                                <input type="email" id="GuardianEmail" class="form-control" placeholder="Email" name="GuardianEmail">
+                                <label for="GuardianEmail">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
                 </div>
-            
-            
-        </form>
- </div>
-                <script>
-                const hmoInput = document.getElementById('uploadHMO');
-                const hmoPreview = document.getElementById('preview');
-
-                hmoInput.addEventListener('change', function () {
-                    const file = this.files[0];
-                    if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        hmoPreview.src = e.target.result;
-                        hmoPreview.style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
-                    }
-                });
-
-                // Authorization upload preview (optional)
-                const authInput = document.getElementById('uploadAuthorization');
-                const authPreview = document.getElementById('authPreview');
-
-                authInput.addEventListener('change', function () {
-                    const file = this.files[0];
-                    if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        authPreview.src = e.target.result;
-                        authPreview.style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
-                    }
-                });
-                </script>
-
-
-
-
-   
-   
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Bootstrap JS and optional FontAwesome for icons -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

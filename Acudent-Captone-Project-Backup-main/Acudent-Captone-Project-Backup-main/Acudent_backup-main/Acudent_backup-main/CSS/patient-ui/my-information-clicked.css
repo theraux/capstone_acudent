@@ -1,3 +1,15 @@
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+
+}
 #password-display {
     font-size: clamp(1rem, 5vw, 10.5rem);
     color: #502c00;
@@ -9,30 +21,45 @@
 }
 
 .information-form {
-    position: absolute;
     background-color: #FEF3E7;
-    width: 50%;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-form {
-    display: grid;
     width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 0 auto;
+    padding: 80px;
+    box-sizing: border-box;
+    border: 1px solid #502c00;
+    box-shadow: 0 0 15px rgba(80, 44, 0, 0.3);
+    border-radius: 15px;
 }
 
+ .container h2{
+  text-align: center;
+}
 .form-floating {
     position: relative;
     width: 100%;
 }
+.form-column {
+    margin-left: 20vw;
+    width: 90%;       /* keeps it responsive */
+    max-width: 100%; /* optional: limit size on large screens */
+}
 
 .form-floating input,
-.form-floating select {
+.form-floating select,
+.form-floating label
+.form-floating :placeholder-shown {
     width: 100%;
     padding: 0.5rem;
+    color: #502c00;
+    border: 1px solid #502c00;
+    border-radius: 5px;
+}
+.form-floating label{
+  color: #502c00;
+}
+.form-control:focus{
+   border-color: #8B4513;          /* dark brown border */
+  box-shadow: 0 0 8px rgba(139, 69, 19, 0.5); /* soft brown glow */
+  outline: none;
 }
 
 /* Medical History uses its own grid */
@@ -47,8 +74,7 @@ form {
 /* Headings span all columns in grid */
 h2, h4 {
     grid-column: span 3;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    color: #502c00;
 }
 
 hr {
@@ -62,11 +88,9 @@ label {
   gap: 1rem;
   font-weight: 600;
 }
-input[type="radio"] {
-  margin-right: 0.5rem;
-}
 
-.required {
+
+label .required {
     color: red;
     font-weight: bold;
     display: inline-block;
@@ -87,5 +111,17 @@ input[type="radio"] {
 
 .upload-label i {
   font-size: 1.5rem;
+}
+
+.form-check input{
+  border: 1px solid black
+}
+
+@media (max-width: 768px) {
+  .form-column {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
 }
 
