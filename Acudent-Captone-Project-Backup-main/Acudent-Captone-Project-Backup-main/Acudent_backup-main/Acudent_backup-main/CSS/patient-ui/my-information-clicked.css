@@ -10,20 +10,76 @@ body{
   overflow-x: hidden;
 
 }
+/* this is for user profile pic */
+.personal-information-title{
+ margin-left: clamp(1rem, 40vw, 35vw);
+
+}
+/* Make the profile picture and info aligned horizontally */
+.personal-info-wrapper {
+  display: flex;
+  align-items: center; /* Vertically align the content */
+}
+.patient-profile{
+  flex-shrink: 0;
+}
+.personal-info-wrapper {
+  flex-wrap: wrap; /* allow wrapping for responsiveness */
+}
+.containerofprofile {
+  display: flex;
+  align-items: center;
+  margin-left: clamp(10%, 30%, 40%);
+  gap: 5%;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+
+}
+#name-display { 
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 1.5rem;
+  vertical-align: middle;
+} 
+.ID {
+  display: inline-block;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  margin-left: auto; /* push it to the right */
+}
+
+/* Ensure the profile image size and margin are controlled */
+.patient-profile-pic {
+ width: clamp(4rem, 10vw, 8rem);
+  height: clamp(4rem, 10vw, 8rem);
+  border-radius: 50%;
+  margin: 0; /* remove that margin-left pushing it away */
+}
+
+#name-display {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+
+#user-name-display {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  margin-bottom: 0.5rem;
+}
+
 #password-display {
-    font-size: clamp(1rem, 5vw, 10.5rem);
-    color: #502c00;
+  font-size: clamp(1rem, 2vw, 1rem);
 }
+/* end of user profile pic */
 
-#password-mask {
-    font-weight: bold;
-    color: #999;
-}
 
+/*form */
 .information-form {
     background-color: #FEF3E7;
     width: 100%;
-    padding: 80px;
+    padding: clamp(40px, 5vw, 80px);
     box-sizing: border-box;
     border: 1px solid #502c00;
     box-shadow: 0 0 15px rgba(80, 44, 0, 0.3);
@@ -38,7 +94,7 @@ body{
     width: 100%;
 }
 .form-column {
-    margin-left: 20vw;
+    margin-left: 22vw;
     width: 90%;       /* keeps it responsive */
     max-width: 100%; /* optional: limit size on large screens */
 }
@@ -53,8 +109,10 @@ body{
     border: 1px solid #502c00;
     border-radius: 5px;
 }
+
 .form-floating label{
   color: #502c00;
+  font-size: clamp(1rem, 2vw, 1rem);
 }
 .form-control:focus{
    border-color: #8B4513;          /* dark brown border */
@@ -123,5 +181,43 @@ label .required {
     margin-right: auto;
     width: 95%;
   }
+  .personal-information-title{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
 }
 
+
+.containerofprofile {
+  display: flex;
+  align-items: center;
+  margin-left: clamp(5%, 20%, 30%); /* smaller default clamp */
+  gap: 5%;
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .containerofprofile {
+    flex-direction: column;   /* stack vertically */
+    align-items: flex-start;  /* align text under image */
+    margin-left: 5%;          /* tighter margin */
+    gap: 1rem;                /* smaller gap */
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .containerofprofile {
+    margin-left: clamp(5%, 15%, 20%);
+    gap: 2rem;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 993px) {
+  .containerofprofile {
+    margin-left: clamp(10%, 25%, 35%);
+    gap: 5%;
+  }
+}

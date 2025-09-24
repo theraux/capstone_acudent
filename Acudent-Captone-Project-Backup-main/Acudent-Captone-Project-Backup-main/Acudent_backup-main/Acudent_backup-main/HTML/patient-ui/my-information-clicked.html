@@ -1,14 +1,29 @@
-<div class="personal-information-container container py-4">
-    <h2 class="mb-4">Personal Information</h2>
-    <div class="row mb-4">
-        <!-- User Info Section -->
-        <div class="col-12 text-center">
-            <img id="profile-pic" class="profile-pic img-fluid rounded-circle" src="" alt="Profile Picture">
-            <h3 id="name-display">Dracy</h3>
-            <h4 id="user-name-display">@Dracy</h4>
-            <h5 id="password-display"><span id="password-mask">****</span></h5>
-            <h5 id="patient-id-display">Patient ID: <span id="patient-id"></span></h5>
+<div class="personal-information-container container">
+    <h2 class="mb-4 personal-information-title">Personal Information</h2>
+    <div class="row mb-4 align-items-center">
+        <!-- Create a wrapper for the profile image and info section -->
+        <div class="personal-info-wrapper justify-content-between">
+            <!-- User Info Section -->
+             <div class="containerofprofile d-flex">
+            <div class="patient-profile">
+                <img id="patient-profile-pic" class="patient-profile-pic img-fluid rounded-circle" src="" alt="Profile Picture">
+            </div>
+            <div class="info">
+                <h3 id="name-display">Dracy Malibu</h3>
+                <h4 id="user-name-display">Username: @Dracula</h4>
+                <h5 id="password-display">Password: ********</h5>
+            </div>
+            </div>
+
+            <div class="ID">
+                <h5 id="patient-id-display">Patient ID: 001</h5>
+            </div>
         </div>
+    </div>
+</div>
+
+
+        
 
         <!-- Personal Info Form -->
         <div class="col-12 col-md-8 d-flex justify-content-center form-column">
@@ -39,7 +54,7 @@
 
                         <!-- Second Row -->
                         <div class="row mb-3">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating">
                                     <select id="Gender" name="Gender" class="form-control" name="Gender" required>
                                         <option value="" disabled selected>Select Gender</option>
@@ -49,23 +64,23 @@
                                     <label for="Gender">Gender<span class="required">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating">
                                     <input type="date" id="Birthdate" class="form-control" name="Birthdate" required>
                                     <label for="Birthdate">Birthdate<span class="required">*</span></label>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Third Row -->
-                        <div class="row mb-3">
-                            <div class="col-12 col-md-6">
+                              <div class="col-12 col-md-4">
                                 <div class="form-floating">
                                     <input type="text" id="Age" class="form-control" placeholder="Age" name="Age" required>
                                     <label for="Age">Age<span class="required">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                        </div>
+
+                        <!-- Third Row -->
+                        <div class="row mb-3"> 
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating">
                                     <input type="text" id="Nationality" class="form-control" placeholder="Nationality" name="Nationality">
                                     <label for="Nationality">Nationality</label>
@@ -87,6 +102,7 @@
                                     <label for="Email">Email<span class="required">*</span></label>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="row mt-3">
                              <div class="col-12 col-md-12">
@@ -110,7 +126,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-floating">
                                     <input type="text" id="PastSurgeries" class="form-control" placeholder="Past Surgeries/Hospitalizations" name="PastSurgeries">
-                                    <label for="PastSurgeries">Past Surgeries/Hospitalizations</label>
+                                    <label for="PastSurgeries">Past Hospitalizations</label>
                                 </div>
                             </div>
                          </div>
@@ -167,7 +183,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="form-floating">
                                     <input type="text" id="PlanType" class="form-control" placeholder="Plan Type/Coverage Level" name="PlanType">
-                                    <label for="PlanType">Plan Type/Coverage Level</label>
+                                    <label for="PlanType">Plan Type/Coverage</label>
                                 </div>
                             </div>
                         </div>
