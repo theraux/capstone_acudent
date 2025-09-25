@@ -4,7 +4,7 @@
         <!-- Create a wrapper for the profile image and info section -->
         <div class="personal-info-wrapper justify-content-between">
             <!-- User Info Section -->
-             <div class="containerofprofile d-flex">
+         <div class="containerofprofile d-flex">
             <div class="patient-profile">
                 <img id="patient-profile-pic" class="patient-profile-pic img-fluid rounded-circle" src="" alt="Profile Picture">
             </div>
@@ -19,8 +19,7 @@
                 <h5 id="patient-id-display">Patient ID: 001</h5>
             </div>
         </div>
-    </div>
-</div>
+ 
 
 
         
@@ -87,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                         <h3>Contact Information</h3>
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
@@ -113,6 +112,7 @@
                             </div>
                         </div>
 
+                        <br>
                         <hr>
 
                         <h3>Medical History</h3>
@@ -146,7 +146,7 @@
                             </div>
                         </div>
                         
-
+                        <br>
                         <h3>Medical Conditions</h3>
                         <div class="col-12 col-md-12">
                         <div class="form-floating mb-3">
@@ -154,7 +154,7 @@
                             <label for="MedicalConditions">Medical Conditions</label>
                         </div>
                         </div>
-
+                        <br>
                         <h3>HMO Information</h3>
                         <div class="form-group mb-3">
                             <p>Are you covered by an HMO?</p>
@@ -165,7 +165,7 @@
                                 <input type="radio" class="form-check-input" name="hasHMO" value="no"> No
                             </div>
                         </div>
-
+                        <br>
                         <h6>If yes, fill out the following</h6>
                         <div class="row mb-3">
                             <div class="col-12 col-md-4">
@@ -208,7 +208,7 @@
                             </div>
 
                     
-
+                        <br>
                         <!-- Authorization upload -->
                         <h4>Letter of Authorization</h4>
                         <div class="form-check">
@@ -221,7 +221,8 @@
                         <div class="form-check mb-3">
                             <input type="radio" class="form-check-input" name="hasAuthorization" value="no"> No
                         </div>
-
+                        <br>
+                        <hr>
                         <h3>For Patients Under 18 Years Old</h3>
                         <div class="row mb-3">
                         <div class="col-12 col-md-4">
@@ -259,6 +260,19 @@
                                 <input type="email" id="GuardianEmail" class="form-control" placeholder="Email" name="GuardianEmail">
                                 <label for="GuardianEmail">Email</label>
                             </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-12">
+                        <h2 style="text-align: center;"><u>Consent and Agreement Statement</u></h2>
+                        <p style="text-align: center;"><i>Please read the Consent and agreement Statement </i></p>
+                        <div class="form-check d-flex justify-content-center align-items-center" style="gap: 15px;">
+                            <input type="checkbox" id="agreement" class="form-check-input" name="agreement" style="margin-bottom: 12px;">
+                            <label class="form-check-label" for="agreement">I agree and understand</label>
+                        </div>
                         </div>
                     </div>
                     </form>

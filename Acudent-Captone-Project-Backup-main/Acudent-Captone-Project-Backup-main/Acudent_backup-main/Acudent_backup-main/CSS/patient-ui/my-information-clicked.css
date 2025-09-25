@@ -7,8 +7,10 @@
 body{
   background-color: #fff;
   font-family: "Montserrat", sans-serif;
-  overflow-x: hidden;
-
+}
+.container-personal{
+  margin: 0%;
+  padding: 50%;
 }
 /* this is for user profile pic */
 .personal-information-title{
@@ -108,6 +110,7 @@ body{
     color: #502c00;
     border: 1px solid #502c00;
     border-radius: 5px;
+   
 }
 
 .form-floating label{
@@ -116,17 +119,16 @@ body{
 }
 .form-control:focus{
    border-color: #8B4513;          /* dark brown border */
-  box-shadow: 0 0 8px rgba(139, 69, 19, 0.5); /* soft brown glow */
+   box-shadow: 0 0 4px rgba(139, 69, 19, 0.5); /* soft brown glow */
   outline: none;
 }
 
 /* Medical History uses its own grid */
 .medical-history {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     gap: 1.5rem;
     width: 100%;
-    grid-column: span 3; /* span all columns of the parent form */
+
 }
 
 /* Headings span all columns in grid */
@@ -135,16 +137,13 @@ h2, h4 {
     color: #502c00;
 }
 
-hr {
-    grid-column: span 3;
-    border: 1px solid #ccc;
-}
+
 
 label {
   display: flex;
   margin-bottom: 0.5rem;
-  gap: 1rem;
-  font-weight: 600;
+  gap: 0.2rem;
+  font-weight: 600; 
 }
 
 
@@ -172,9 +171,15 @@ label .required {
 }
 
 .form-check input{
-  border: 1px solid black
+  border: 1px solid #502C00;
 }
 
+.form-check-label {
+  color: #502C00;
+}
+p{
+  color: #502C00;
+}
 @media (max-width: 768px) {
   .form-column {
     margin-left: auto;
