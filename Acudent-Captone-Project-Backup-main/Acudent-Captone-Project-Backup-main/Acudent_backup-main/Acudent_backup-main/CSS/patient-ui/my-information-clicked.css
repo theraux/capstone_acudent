@@ -12,6 +12,9 @@ body{
   margin: 0%;
   padding: 50%;
 }
+.personal-information-container{
+  margin-top:80px;
+}
 /* this is for user profile pic */
 .personal-information-title{
  margin-left: clamp(1rem, 40vw, 35vw);
