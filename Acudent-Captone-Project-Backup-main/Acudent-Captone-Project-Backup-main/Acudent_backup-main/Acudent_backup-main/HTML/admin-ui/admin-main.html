@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Add in the <head> of your HTML -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="../../CSS/admin-ui/admin-main.css">
     <link rel="stylesheet" href="../../CSS/admin-ui/admin-sidebar.css">
     <link rel="stylesheet" href="../../CSS/admin-ui/admin-navbar.css">
     <link rel="stylesheet" href="../../CSS/admin-ui/admin-dashboard.css">
+    <link rel="stylesheet" href="../../CSS/admin-ui/admin-appoinment-scheduler.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -109,7 +110,7 @@
         <h3 id="username-display" class="mt-4 mb-3">Dracy</h3>
       </div>
       <nav class="nav flex-column nav-buttons">
-        <button class="btn w-100 mt-2" onclick="showSection('admin-dashboard')">
+        <button class="btn w-100 mt-2" tabindex="0" data-target="admin-dashboard">
           <i class="fas fa-home"></i> Dashboard
         </button>
 
@@ -121,16 +122,16 @@
           </button>
 
           <div id="appointmentSubmenu" class="collapse">
-            <button class="btn w-100" data-page="../../HTML/patient-ui/book-appointment.html">
+            <button class="btn w-100" tabindex="0" data-target="admin-appointment-scheduler">
               <span><i class="fas fa-clock"></i> Appointment & Scheduler</span>
             </button>
-            <button class="btn w-100" data-page="../../HTML/patient-ui/my-appointments.html">
-              <span><i class="fas fa-history"></i> History</span>
+            <button class="btn w-100" tabindex="0" data-target="admin-appointment-logs">
+              <span><i class="fas fa-history"></i>Appointment Logs</span>
             </button>
           </div>
         </div>
 
-        <button class="btn w-100 mt-2" onclick="showSection('admin-dashboard')">
+        <button class="btn w-100 mt-2" tabindex="0" data-target="">
           <i class="fas fa-user"></i> Patient
         </button>
         <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
@@ -152,7 +153,7 @@
     <!-- Dashboard -->
     <section id="admin-dashboard" class="admin-dashboard-container p-5 mt-5">
       <div class="admin-dashboard  p-5 mt-5">
-        <div class="admin-box text-center">
+        <div class="admin-box text-center" role="button" tabindex="0" data-target="">
           <h3>Patient Appointment</h3>
           <span id="admin-count"></span>
         </div>
@@ -175,10 +176,68 @@
         <div class="admin-box text-center mt-2">
             <h3>Admin</h3>
             <span id="admin-count"></span>
-        </div>
-        
+        </div>    
       </div>
     </section>
+    
+    <!---Appointment Scheduler-->
+    <section id="admin-appointment-scheduler" class="admin-appointment-container">
+      <div class="admin-appointment">
+        <div class="today-appointment">
+          <h3>Today's Appointment</h3>
+        </div>
+      <br>
+   <!-- Header Row -->
+    <div class="admin-type">
+      <h4 class="col-name">Name</h4>
+      <h4 class="col-type">Type</h4>
+      <h4 class="col-time">Time</h4>
+      <h4 class="col-dentist">Dentist</h4>
+      <h4 class="col-status">Status</h4>
+    </div>
+
+<!-- Data Row -->
+    <div class="admin-name-patient">
+      <span class="col-name">John Doe</span>
+      <span class="col-type">Cleaning</span>
+      <span class="col-time">10:00 AM</span>
+      <span class="col-dentist">Dr. Smith</span>
+      <span class="col-status">Confirmed</span>
+    </div>
+    </div>
+    </section>
+
+
+
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const boxes = document.querySelectorAll(".admin-box");
+    const buttons = document.querySelectorAll("[data-target]"); // sidebar buttons
+    const sections = document.querySelectorAll("section");
+  
+
+    // Default: show dashboard
+    document.getElementById("admin-dashboard").classList.add("active");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+
+        // Skip if no target (e.g., logout button)
+        if (!targetId) return;
+
+        // Hide all sections
+        sections.forEach(sec => sec.classList.remove("active"));
+
+        // Show the selected section
+        document.getElementById(targetId).classList.add("active");
+      });
+    });
+  });
+</script>
+
+</body>
+
 
   </div>
 </div>

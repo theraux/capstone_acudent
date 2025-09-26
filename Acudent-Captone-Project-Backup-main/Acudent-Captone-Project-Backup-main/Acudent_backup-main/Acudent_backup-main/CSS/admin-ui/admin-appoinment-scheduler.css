@@ -1,0 +1,73 @@
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+}
+.admin-appointment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: clamp(3.75rem, 10vw, 15rem);  
+}
+
+.today-appointment {
+  border: 1px solid #502C00;
+  border-radius: 30px;
+  padding: clamp(0.75rem, 1vw, 1rem);
+  width: 30%;
+  text-align: center;
+  margin-left: 15%;
+  margin-bottom: 3%;
+}
+
+.today-appointment h3{
+    color: #502C00;
+}
+.admin-type,
+.admin-name-patient {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 15%;
+  margin-top: 1.3rem;
+
+}
+
+/* Set custom widths or flex grow per column */
+.col-name {
+  flex: 2; /* wider */
+}
+
+.col-type {
+  flex: 1.5;
+}
+
+.col-time {
+  flex: 1.2;
+}
+
+.col-dentist {
+  flex: 1.8;
+}
+
+.col-status {
+  flex: 1.2;
+}
+
+/* Optional: center text */
+.admin-type h4,
+.admin-name-patient span {
+  text-align: center;
+}
+.admin-name-patient{
+    border: 1px solid #502C00;
+    border-radius: 25px;
+    padding: 10px 25px 10px;
+}
