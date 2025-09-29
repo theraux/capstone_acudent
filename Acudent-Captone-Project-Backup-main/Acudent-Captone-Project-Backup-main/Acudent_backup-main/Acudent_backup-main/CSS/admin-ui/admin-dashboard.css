@@ -12,16 +12,19 @@ body {
 
 
 .admin-dashboard {
-  display: flex;
-  flex-wrap: wrap;            /* allow wrapping */
-  gap: 5rem;                /* spacing between boxes */
+  width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));         /* allow wrapping */
+  gap: 3rem 15rem; /* 5rem vertical gap, 2rem horizontal gap */              /* spacing between boxes */
   margin-top: clamp(3.75rem, 10vw, 7.5rem);     /* 60px – 120px */
   margin-left: 22vw;
+
 }
 
+/* ========================================== */
 .admin-box {
-  flex: 0 0 calc(30% - 2rem); /* exactly 2 per row */
   height: 200px; /* fixed height */
+  width: 450px;
   position: relative;
   background:  #FEF3E7;
   border: 2px solid #502C00;
@@ -29,6 +32,7 @@ body {
   text-align: center;
   font-weight: bold;
   color: #502C00;
+  margin-left: 100px;
 }
 
 /* First layer */
