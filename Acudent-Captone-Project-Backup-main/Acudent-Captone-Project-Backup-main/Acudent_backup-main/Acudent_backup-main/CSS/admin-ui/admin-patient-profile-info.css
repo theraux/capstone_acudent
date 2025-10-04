@@ -1,0 +1,46 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+.admin-patientprofiles-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(2rem, 10vw, 10rem);
+    width: 80%;
+}
+.patientprofile-info{
+    margin-left: 30vw;
+    width: 30%;
+    border: 1px solid #502C00;
+    border-radius: 30px;
+    padding: clamp(0.75rem, 1vw, 1rem);
+    color: #502C00;
+    text-align: center;
+
+}
+.admin-patient-info {
+    display: flex;
+    flex-direction: row; /* <-- change from column to row */
+    justify-content: center; /* horizontally center the two boxes */
+    gap: 2rem; /* space between the two boxes */
+    width: 80%; 
+    margin-left: 30vw;
+}
+.admin-patient-general-info,
+.admin-patient-anamnesia {
+    border: 1px solid #502C00;
+    padding: clamp(0.75rem, 1vw, 1rem);
+    width: 45%; /* or any value that fits your layout */
+    box-sizing: border-box; /* includes padding and border in width */
+}
+.admin-patient-general-info,
+.admin-patient-anamnesia h3{
+    text-align: center;
+}
+.admin-patient-general-info p{
+    text-align: left;
+    font-size: 1.2rem;
+}
+.admin-patient-general-anamnesia p{
+    font-size: 1.2rem;
+}

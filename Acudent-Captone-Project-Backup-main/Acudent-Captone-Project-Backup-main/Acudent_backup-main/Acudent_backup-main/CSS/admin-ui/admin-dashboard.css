@@ -10,11 +10,10 @@ body {
     overflow-x: hidden;
 }
 
-
 .admin-dashboard {
   width: 1000px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));         /* allow wrapping */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));       
   gap: 3rem 15rem; /* 5rem vertical gap, 2rem horizontal gap */              /* spacing between boxes */
   margin-top: clamp(3.75rem, 10vw, 7.5rem);     /* 60px – 120px */
   margin-left: 22vw;

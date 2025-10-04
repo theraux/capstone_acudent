@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-appoinment-scheduler.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-appointment-logs.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile-info.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -156,186 +157,205 @@
             </nav>
           </aside>
 
-          <div class="content-container">
-            <!-- Dashboard -->
-            <section id="admin-dashboard" class="admin-dashboard-container p-5 mt-5">
-              <div class="admin-dashboard  p-5 mt-5">
-                <div class="admin-box text-center" role="button" tabindex="0" data-target="">
-                  <h3>Patient Appointment</h3>
-                  <span id="admin-count"></span>
+
+          <!-- Dashboard -->
+          <section id="admin-dashboard" class="admin-dashboard-container p-5 mt-5">
+            <div class="admin-dashboard  p-5 mt-5">
+              <div class="admin-box text-center" role="button" tabindex="0" data-target="">
+                <h3>Patient Appointment</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center">
+                <h3>Patients</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center">
+                <h3>Dentist</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Inventory</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Payment</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Admin</h3>
+                <span id="admin-count"></span>
+              </div>
+            </div>
+          </section>
+
+          <!---Appointment Scheduler-->
+          <section id="admin-appointment-scheduler" class="admin-appointment-container">
+            <div class="admin-appointment">
+              <div class="today-appointment">
+                <h3>Today's Appointment</h3>
+              </div>
+              <br>
+
+              <table class="table admin-appointment-type">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>10:00 AM</td>
+                    <td>Dr. Smith</td>
+                    <td>Confirmed</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>10:00 AM</td>
+                    <td>Dr. Smith</td>
+                    <td>Confirmed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+
+          <!----Appointment Logs---->
+          <section id="admin-appointment-logs" class="admin-appointment-log-container">
+            <div class="admin-appointment-logs">
+              <div class="appointment-logs">
+                <h3>Appointment Logs</h3>
+              </div>
+              <br>
+
+              <!-- Search bar -->
+              <div class="search-wrapper">
+                <input type="text" placeholder="Search" name="admin-logs-searchbar" class="adminlogs-searchbar">
+                <i class="fas fa-search"></i>
+              </div>
+              <br>
+
+              <!-- Table for logs -->
+              <table class="table admin-logs-type">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>01/24/02</td>
+                    <td>Dr. Smith</td>
+                    <td>Confirmed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!---Patient Profile Section-->
+          <section id="admin-patient-profiles" class="admin-patient-profiles-container">
+            <div class="admin-patient-profiles">
+              <div class="patient-profile">
+                <h3>Patient Profiles</h3>
+              </div>
+
+              <div class="search-wrapper-patient">
+                <input type="text" name="admin-patient-profiles-searchbar" class="adminpatient-searchbar">
+                <i class="fas fa-search"></i>
+              </div>
+              <br>
+              <div class="patient-profile-box-container" id="patient-list">
+                <div class="patient-profile-box" tabindex="0" data-target="admin-patientprofile-info">
+                  <img id="patient-profileforadmin">
+                  <h3 id="patient-nameforadmin"></h3>
+                  <span id="patientcpnum"></span>
                 </div>
-                <div class="admin-box text-center">
-                  <h3>Patients</h3>
-                  <span id="admin-count"></span>
+                
+              </div>
+            </div>
+          </section>
+
+          <section id="admin-patientprofile-info" class="admin-patientprofiles-info-container">
+            <div class="admin-patientprofiles-info">
+              <div class="patientprofile-info">
+                <h3>Patient Profiles</h3>
+              </div>
+
+              <div class="admin-patient-info">
+                <div class="admin-patient-general-info">
+                  <h3>General Information</h3>
+                  <div class="admin-patientinfo">
+                    <p id="admin-patient-name">Name: <span id="patient-name-text"></span></p >
+                    <p id="admin-patient-birthday">Birthday: <span id="patient-birthday-text"></span></p >
+                    <p id="admin-patient-sex">Sex: <span id="patient-sex-text"></span></p>
+                    <p id="admin-patient-address">Address: <span id="patient-address-text"></span></p>
+                    <p id="admin-patient-phonenum">Phone: <span id="patient-phonenum-text"></span></p>
+                  </div>
                 </div>
-                <div class="admin-box text-center">
-                  <h3>Dentist</h3>
-                  <span id="admin-count"></span>
-                </div>
-                <div class="admin-box text-center mt-2">
-                  <h3>Inventory</h3>
-                  <span id="admin-count"></span>
-                </div>
-                <div class="admin-box text-center mt-2">
-                  <h3>Payment</h3>
-                  <span id="admin-count"></span>
-                </div>
-                <div class="admin-box text-center mt-2">
-                  <h3>Admin</h3>
-                  <span id="admin-count"></span>
+
+                <div class="admin-patient-anamnesia">
+                  <h3>Anamnesia</h3>
+                  <div class="admin-patientinfo">
+                    <p id="admin-patient-allergy">Allergy: <span id="patient-allergy-text"></span></p>
+                    <p id="admin-patient-cdisease">Chronic Disease: <span id="patient-cdisease-text"></span></p>
+                    <p id="admin-patient-btype">Blood Type: <span id="patient-btype-text"></span></p >
+                  </div>
                 </div>
               </div>
-            </section>
 
-            <!---Appointment Scheduler-->
-            <section id="admin-appointment-scheduler" class="admin-appointment-container">
-              <div class="admin-appointment">
-                <div class="today-appointment">
-                  <h3>Today's Appointment</h3>
-                </div>
-                <br>
-
-                <table class="table admin-appointment-type">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Time</th>
-                      <th>Dentist</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>John Doe</td>
-                      <td>Cleaning</td>
-                      <td>10:00 AM</td>
-                      <td>Dr. Smith</td>
-                      <td>Confirmed</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td>John Doe</td>
-                      <td>Cleaning</td>
-                      <td>10:00 AM</td>
-                      <td>Dr. Smith</td>
-                      <td>Confirmed</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="search-wrapper-patient-info">
+                <input type="text" name="admin-patient-info-searchbar" class="adminpatient-info-searchbar">
+                <i class="fas fa-search"></i>
               </div>
-            </section>
-
-
-            <!----Appointment Logs---->
-            <section id="admin-appointment-logs" class="admin-appointment-log-container">
-              <div class="admin-appointment-logs">
-                <div class="appointment-logs">
-                  <h3>Appointment Logs</h3>
-                </div>
-                <br>
-
-                <!-- Search bar -->
-                <div class="search-wrapper">
-                  <input type="text" placeholder="Search" name="admin-logs-searchbar" class="adminlogs-searchbar">
-                  <i class="fas fa-search"></i>
-                </div>
-                <br>
-
-                <!-- Table for logs -->
-                <table class="table admin-logs-type">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Date</th>
-                      <th>Dentist</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>John Doe</td>
-                      <td>Cleaning</td>
-                      <td>01/24/02</td>
-                      <td>Dr. Smith</td>
-                      <td>Confirmed</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <!---Patient Profile Section-->
-            <section id="admin-patient-profiles" class="admin-patient-profiles-container">
-              <div class="admin-patient-profiles">
-                <div class="patient-profile">
-                  <h3>Patient Profiles</h3>
-                </div>
-
-                <div class="search-wrapper-patient">
-                  <input type="search" name="admin-patient-profiles-searchbar" class="adminpatient-searchbar">
-                  <i class="fas fa-search"></i>
-                </div>
-                <br>
-                <div class="patient-profile-box-container">
-                  <div class="patient-profile-box">
-                    <img id="patient-profileforadmin">
-                    <h3 id="patient-nameforadmin"></h3>
-                    <span id="patientcpnum"></span>
-                  </div>
-                  <div class="patient-profile-box">
-                    <img id="patient-profileforadmin">
-                    <h3 id="patient-nameforadmin"></h3>
-                    <span id="patientcpnum"></span>
-                  </div>
-                  <div class="patient-profile-box">
-                    <img id="patient-profileforadmin">
-                    <h3 id="patient-nameforadmin"></h3>
-                    <span id="patientcpnum"></span>
-                  </div>
-                  <div class="patient-profile-box">
-                    <img id="patient-profileforadmin">
-                    <h3 id="patient-nameforadmin"></h3>
-                    <span id="patientcpnum"></span>
-                  </div>
-                </div>
-              </div>
-            </section>
+            </div>
+          </section>
 
 
 
 
 
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                const boxes = document.querySelectorAll(".admin-box");
-                const buttons = document.querySelectorAll("[data-target]"); // sidebar buttons
-                const sections = document.querySelectorAll("section");
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const boxes = document.querySelectorAll(".admin-box");
+              const buttons = document.querySelectorAll("[data-target]"); // sidebar buttons
+              const sections = document.querySelectorAll("section");
 
 
-                // Default: show dashboard
-                document.getElementById("admin-dashboard").classList.add("active");
+              // Default: show dashboard
+              document.getElementById("admin-dashboard").classList.add("active");
 
-                buttons.forEach(btn => {
-                  btn.addEventListener("click", () => {
-                    const targetId = btn.getAttribute("data-target");
+              buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                  const targetId = btn.getAttribute("data-target");
 
-                    // Skip if no target (e.g., logout button)
-                    if (!targetId) return;
+                  // Skip if no target (e.g., logout button)
+                  if (!targetId) return;
 
-                    // Hide all sections
-                    sections.forEach(sec => sec.classList.remove("active"));
+                  // Hide all sections
+                  sections.forEach(sec => sec.classList.remove("active"));
 
-                    // Show the selected section
-                    document.getElementById(targetId).classList.add("active");
-                  });
+                  // Show the selected section
+                  document.getElementById(targetId).classList.add("active");
                 });
               });
-            </script>
-
-          </div>
+            });
+          </script>
         </div>
       </div>
 
