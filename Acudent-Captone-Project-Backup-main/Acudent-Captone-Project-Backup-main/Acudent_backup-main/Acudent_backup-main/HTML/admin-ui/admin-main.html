@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-appointment-logs.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-full-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-dentist-profile.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -141,7 +143,7 @@
               <button class="btn w-100 mt-2" tabindex="0" data-target="admin-patient-profiles">
                 <i class="fas fa-user"></i> Patient
               </button>
-              <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-dentistprofile">
                 <i class="fas fa-user"></i> Dentist
               </button>
               <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
@@ -196,7 +198,7 @@
               </div>
               <br>
 
-              <table class="table admin-appointment-type">
+              <table class="table admin-appointment-type" id="admin-appointmentType-table">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -206,7 +208,7 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="admin-appointmentType-body">
                   <tr>
                     <td>John Doe</td>
                     <td>Cleaning</td>
@@ -245,7 +247,7 @@
               <br>
 
               <!-- Table for logs -->
-              <table class="table admin-logs-type">
+              <table class="table admin-logs-type" id="admin-logsType-table">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -255,13 +257,13 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="admin-logsType-body">
                   <tr>
-                    <td>John Doe</td>
-                    <td>Cleaning</td>
-                    <td>01/24/02</td>
-                    <td>Dr. Smith</td>
-                    <td>Confirmed</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -276,7 +278,8 @@
               </div>
 
               <div class="search-wrapper-patient">
-                <input type="text" name="admin-patient-profiles-searchbar" class="adminpatient-searchbar">
+                <input type="text" name="admin-patient-profiles-searchbar" class="adminpatient-searchbar"
+                  placeholder="Search">
                 <i class="fas fa-search"></i>
               </div>
               <br>
@@ -286,7 +289,6 @@
                   <h3 id="patient-nameforadmin"></h3>
                   <span id="patientcpnum"></span>
                 </div>
-                
               </div>
             </div>
           </section>
@@ -300,33 +302,133 @@
               <div class="admin-patient-info">
                 <div class="admin-patient-general-info">
                   <h3>General Information</h3>
-                  <div class="admin-patientinfo">
-                    <p id="admin-patient-name">Name: <span id="patient-name-text"></span></p >
-                    <p id="admin-patient-birthday">Birthday: <span id="patient-birthday-text"></span></p >
+                  <div class="admin-patientinfo" tabindex="0" data-target="admin-patient-full-info">
+                    <p id="admin-patient-name">Name: <span id="patient-name-text"></span></p>
+                    <p id="admin-patient-birthday">Birthday: <span id="patient-birthday-text"></span></p>
                     <p id="admin-patient-sex">Sex: <span id="patient-sex-text"></span></p>
                     <p id="admin-patient-address">Address: <span id="patient-address-text"></span></p>
                     <p id="admin-patient-phonenum">Phone: <span id="patient-phonenum-text"></span></p>
                   </div>
                 </div>
 
-                <div class="admin-patient-anamnesia">
+                <div class="admin-patient-anamnesia" tabindex="0" data-target="admin-patient-full-info">
                   <h3>Anamnesia</h3>
                   <div class="admin-patientinfo">
                     <p id="admin-patient-allergy">Allergy: <span id="patient-allergy-text"></span></p>
                     <p id="admin-patient-cdisease">Chronic Disease: <span id="patient-cdisease-text"></span></p>
-                    <p id="admin-patient-btype">Blood Type: <span id="patient-btype-text"></span></p >
+                    <p id="admin-patient-btype">Blood Type: <span id="patient-btype-text"></span></p>
                   </div>
                 </div>
               </div>
 
+
               <div class="search-wrapper-patient-info">
-                <input type="text" name="admin-patient-info-searchbar" class="adminpatient-info-searchbar">
-                <i class="fas fa-search"></i>
+                <h3>Patient History</h3>
+
+                <div class="search-bar">
+                  <input type="text" name="admin-patient-info-searchbar" class="adminpatient-info-searchbar"
+                    placeholder="Search">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+
+              <table class="table admin-patient-history-logs" id="admin-patient-historyLogs-table">
+                <thead>
+                  <tr>
+                    <th>Date<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Services<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Price<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-patient-historyLogs-body">
+                  <td>06/15/25</td>
+                  <td>Orthodontics</td>
+                  <td>P1500.00</td>
+                  <td>dR. mAGUAN</td>
+                  <td>cOMPLETED</td>
+                  <td>Braces 1st Session</td>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+
+          <!-- Read-only Modal -->
+          <section id="admin-patient-full-info" class="admin-patient-full-info-container">
+            <div class="admin-patient-full-info">
+              <div class="modal-header">
+                <h3>General Information</h3>
+                <button class="close-modal"
+                  onclick="document.getElementById('admin-patient-full-info').classList.remove('active')">&times;</button>
+              </div>
+
+              <div class="modal-body">
+                <h4>Personal Details</h4>
+                <p><strong>Name:</strong> <span id="modal-patient-name"></span></p>
+                <p><strong>Birthday:</strong> <span id="patient-birthday"></span></p>
+                <p><strong>Sex:</strong> <span id="patient-sex"></span></p>
+                <h4>Contact Information</h4>
+                <p><strong>Address:</strong> <span id="patient-address"></span></p>
+                <p><strong>Phone:</strong> <span id="patient-phone"></span></p>
+                <p><strong>Email: </strong><span id="patient-email"></span></p>
+                <hr>
+                <p><strong>Allergy:</strong> <span id="patient-allergy"></span></p>
+                <p><strong>Chronic Disease:</strong> <span id="patient-cdisease"></span></p>
+                <p><strong>Blood Type:</strong> <span id="patient-btype"></span></p>
               </div>
             </div>
           </section>
 
 
+          <!---Dentist Profile-->
+          <section id="admin-dentistprofile" class="admin-dentistprofile-container">
+            <div class="admin-dentistprofile">
+              <div class="dentist-profile">
+                <h3>Dentist Profile</h3>
+              </div>
+              <div class="search-wrapper-dentist">
+                <input type="text" name="admin-dentist-profiles-searchbar" class="admindentist-searchbar"
+                  placeholder="Search">
+                <i class="fas fa-search"></i>
+              </div>
+
+              <div class="dentist-box-container" id="dentist-list">
+                <div class="dentist-profile-box" tabindex="0" data-target="">
+                  <img id="dentist-profileforadmin">
+                  <h3 id="dentist-nameforadmin"></h3>
+                  <span id="dentistcpnum"></span>
+                </div>          
+              </div>
+
+              <div class="button-for-dentist">
+                <button class="add-dentist" title="Add Dentist"><span><i class="fa-solid fa-plus"></i></span></button>
+                <button class="dentist-report" title="View Report">Report</button>
+                </div>
+
+            </div>
+
+            <div class="admin-staff-profile">
+              <div class="staff-profile">
+                <h3>Staff profile</h3>
+              </div>
+
+              <div class="staff-box-container" id="staff-list">
+                <div class="staff-profile-box">
+                  <img id="staff-profileforadmin">
+                  <h3 id="staff-nameforadmin"></h3>
+                  <span id="staffcpnum"></span>
+                </div>
+              </div>
+
+              <div class="button-for-staff">
+                <button class="add-staff" title="Add Dentist"><span><i class="fa-solid fa-plus"></i></span></button>
+                </div>
+
+            </div>
+          </section>
 
 
 
@@ -355,6 +457,35 @@
                 });
               });
             });
+          </script>
+
+
+<!-------For modal---------->
+          <script>
+            // open modal
+            document.querySelectorAll('[data-target]').forEach(trigger => {
+              trigger.addEventListener('click', () => {
+                const modalId = trigger.dataset.target;
+                const modal = document.getElementById(modalId);
+                if (modal) modal.classList.add('active');
+              });
+            });
+
+            // close modal
+            document.querySelectorAll('.close-modal').forEach(btn => {
+              btn.addEventListener('click', () => {
+                btn.closest('.admin-patient-full-info-container').classList.remove('active');
+              });
+            });
+
+            // close when clicking outside modal
+            window.addEventListener('click', e => {
+              const activeModal = document.querySelector('.admin-patient-full-info-container.active');
+              if (activeModal && e.target === activeModal) {
+                activeModal.classList.remove('active');
+              }
+            });
+
           </script>
         </div>
       </div>
