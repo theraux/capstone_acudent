@@ -37,8 +37,8 @@
     height: 350px;
     z-index: 1;
     cursor: pointer;
+    justify-items: center;
 }
-
 .patient-profile-box::before{
     content: "";
     position: absolute;
@@ -50,7 +50,30 @@
     background-color: #F5E3CD;
     border: 1px solid #502C00;
 }
-
+.admin-patient-picture{
+  margin-top: 20px;
+  border: 1px solid #502C00;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.admin-patient-picture img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+.admin-patient-info-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #502C00;
+}
+.admin-patient-info-container h3{
+   font-weight: 500;
+}
 /* Search Wrapper */
 .search-wrapper-patient {
   position: relative;

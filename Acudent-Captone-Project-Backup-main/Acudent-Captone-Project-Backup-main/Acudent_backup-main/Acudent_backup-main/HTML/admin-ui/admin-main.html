@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile-info.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-full-info.css">
   <link rel="stylesheet" href="../../CSS/admin-ui/admin-dentist-profile.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-dentist-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-staff-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-inventory.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
@@ -146,7 +149,7 @@
               <button class="btn w-100 mt-2" tabindex="0" data-target="admin-dentistprofile">
                 <i class="fas fa-user"></i> Dentist
               </button>
-              <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-inventory">
                 <i class="fas fa-box"></i> Inventory
               </button>
               <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
@@ -285,9 +288,14 @@
               <br>
               <div class="patient-profile-box-container" id="patient-list">
                 <div class="patient-profile-box" tabindex="0" data-target="admin-patientprofile-info">
-                  <img id="patient-profileforadmin">
-                  <h3 id="patient-nameforadmin"></h3>
-                  <span id="patientcpnum"></span>
+                  <div class="admin-patient-picture">
+                  <img id="patient-profileforadmin" src="profile.jpg" alt="Patient Profile Picture">
+                  </div>
+                  <div class="admin-patient-info-container">
+                  <h3 id="patient-nameforadmin">Dracy Malibu</h3>
+                  <span id="patientcpnum">090502503</span>
+                  <span id="patient-id-number">P123456789</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -302,7 +310,7 @@
               <div class="admin-patient-info">
                 <div class="admin-patient-general-info">
                   <h3>General Information</h3>
-                  <div class="admin-patientinfo" tabindex="0" data-target="admin-patient-full-info">
+                  <div class="admin-patientinfo">
                     <p id="admin-patient-name">Name: <span id="patient-name-text"></span></p>
                     <p id="admin-patient-birthday">Birthday: <span id="patient-birthday-text"></span></p>
                     <p id="admin-patient-sex">Sex: <span id="patient-sex-text"></span></p>
@@ -311,7 +319,7 @@
                   </div>
                 </div>
 
-                <div class="admin-patient-anamnesia" tabindex="0" data-target="admin-patient-full-info">
+                <div class="admin-patient-anamnesia">
                   <h3>Anamnesia</h3>
                   <div class="admin-patientinfo">
                     <p id="admin-patient-allergy">Allergy: <span id="patient-allergy-text"></span></p>
@@ -367,17 +375,17 @@
 
               <div class="modal-body">
                 <h4>Personal Details</h4>
-                <p><strong>Name:</strong> <span id="modal-patient-name"></span></p>
-                <p><strong>Birthday:</strong> <span id="patient-birthday"></span></p>
-                <p><strong>Sex:</strong> <span id="patient-sex"></span></p>
+                <p>Name: <span id="modal-patient-name"></span></p>
+                <p>Birthday: <span id="patient-birthday"></span></p>
+                <p>Sex: <span id="patient-sex"></span></p>
                 <h4>Contact Information</h4>
-                <p><strong>Address:</strong> <span id="patient-address"></span></p>
-                <p><strong>Phone:</strong> <span id="patient-phone"></span></p>
-                <p><strong>Email: </strong><span id="patient-email"></span></p>
+                <p>Address: <span id="patient-address"></span></p>
+                <p>Phone: <span id="patient-phone"></span></p>
+                <p>Email: <span id="patient-email"></span></p>
                 <hr>
-                <p><strong>Allergy:</strong> <span id="patient-allergy"></span></p>
-                <p><strong>Chronic Disease:</strong> <span id="patient-cdisease"></span></p>
-                <p><strong>Blood Type:</strong> <span id="patient-btype"></span></p>
+                <p>Allergy: <span id="patient-allergy"></span></p>
+                <p>Chronic Disease: <span id="patient-cdisease"></span></p>
+                <p>Blood Type: <span id="patient-btype"></span></p>
               </div>
             </div>
           </section>
@@ -396,39 +404,201 @@
               </div>
 
               <div class="dentist-box-container" id="dentist-list">
-                <div class="dentist-profile-box" tabindex="0" data-target="">
-                  <img id="dentist-profileforadmin">
-                  <h3 id="dentist-nameforadmin"></h3>
-                  <span id="dentistcpnum"></span>
-                </div>          
+                <div class="dentist-profile-box" tabindex="0" data-target="admin-dentist-profile-info">
+                  <div class="admin-dentist-picture">
+                  <img id="dentist-profileforadmin" src="profile.jpg" alt="Dentist Profile Picture">
+                  </div>
+                  <div class="admin-dentist-info-container">
+                  <h3 id="dentist-nameforadmin">Mapru</h3>
+                  <span id="dentistcpnum">05352344</span>
+                  </div>
+                </div>
               </div>
 
               <div class="button-for-dentist">
                 <button class="add-dentist" title="Add Dentist"><span><i class="fa-solid fa-plus"></i></span></button>
                 <button class="dentist-report" title="View Report">Report</button>
-                </div>
+              </div>
 
             </div>
 
+            <!---------Staff Profile--------------->
             <div class="admin-staff-profile">
               <div class="staff-profile">
-                <h3>Staff profile</h3>
+                <h3>Staff Profile</h3>
               </div>
 
               <div class="staff-box-container" id="staff-list">
-                <div class="staff-profile-box">
-                  <img id="staff-profileforadmin">
-                  <h3 id="staff-nameforadmin"></h3>
-                  <span id="staffcpnum"></span>
+                <div class="staff-profile-box" tabindex="0" data-target="admin-staff-profile-info">
+                  <div class="admin-staff-picture">
+                  <img id="staff-profileforadmin" src="profile.jpg" alt="Staff Profile Picture">
+                  </div>
+                  <div class="admin-staff-info-container">
+                  <h3 id="staff-nameforadmin">Delaihla</h3>
+                  <span id="staffcpnum">2154542</span>
+                  </div>
                 </div>
               </div>
 
               <div class="button-for-staff">
-                <button class="add-staff" title="Add Dentist"><span><i class="fa-solid fa-plus"></i></span></button>
+                <button class="add-staff" title="Add Staff"><span><i class="fa-solid fa-plus"></i></span></button>
+              </div>
+            </div>
+          </section>
+
+
+          <!----------------Dentist Profile Information---------------------------->
+          <section id="admin-dentist-profile-info" class="dentist-profiles-section-container">
+            <div class="admin-dentist-profile-info">
+              <div class="dentist-profile">
+                <h3>Dentist Profile</h3>
+              </div>
+
+              <div class="dentist-information-container">
+                <div class="dentistprofile">
+                  
+                  <img id="dentist-profilepic" src="profile.jpg" alt="Dentist Profile Picture">
+                  <p id="dentist-name-profile">Dr. Juan Dela Cruz</p>
                 </div>
+                <br>
+                <hr>
+
+                <div class="dentist-information">
+                  <h3>Personal Information</h3>
+                  <div class="info-grid">
+                    <p>Name: <span id="admin-dentist-name">Juan Dela Cruz</span></p>
+                    <p>Contact No.: <span id="admin-dentist-number">0912-345-6789</span></p>
+                    <p>Email: <span id="admin-dentist-email">juan@example.com</span></p>
+                    <p>Address: <span id="admin-dentist-address">Cebu City, Philippines</span></p>
+                  </div>
+
+                  <h3>Professional Details</h3>
+                  <div class="info-grid">
+                    <p>Certificate: <span id="admin-dentist-certificate">PRC Certified</span></p>
+                    <p>License No: <span id="admin-dentist-license-no">D1234567</span></p>
+                    <p>Years of Experience: <span id="admin-dentist-yearsofexp">10</span></p>
+                    <p>Specialization: <span id="admin-dentist-specialization">Orthodontics</span></p>
+                  </div>
+
+                  <h3>Work Schedule</h3>
+                  <div class="info-grid"></div>
+                </div>
+                <button class="admin-edit-dentist"
+                  onclick="document.getElementById('admin-dentist-profile-section').classList.remove('active')">
+                  Edit
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-------------Staff Profile Information---------------------->
+          <section id="admin-staff-profile-info" class="admin-staff-profiles-info-container">
+            <div class="admin-staff-profile-info">
+              <div class="staff-profile">
+                <h3>Staff Profile</h3>
+              </div>
+
+              <div class="staff-information-container">
+                <div class="staffprofile">
+                  <img id="staff-profile-pic" src="profile.jpg" alt="staff-profile-pic">
+                  <p id="staff-name-profile"></p>
+                </div>
+                <br>
+                <hr>
+                <div class="staff-information">
+                  <h3>Personal Information</h3>
+                  <div class="staff-grid">
+                    <p>Name: <span id="admin-staff-name"> </span></p>
+                    <p>Contact: <span id="admin-staff-contact"></span></p>
+                    <p>Email: <span id="admin-staff-email"></span></p>
+                    <p>Address: <span id="admin-staff-address"></span></p>
+                  </div>
+
+                  <h3>Work Schedule</h3>
+                  <div class="staff-grid">
+                  </div>
+                  <button class="admin-edit-staff"
+                    onclick="document.getElementById('admin-staff-profile-section').classList.remove('active')">Edit</button>
+
+                </div>
+              </div>
 
             </div>
           </section>
+
+
+          <!----------------Inventory Section------------------------------->
+          <section id="admin-inventory" class="admin-inventory-container">
+            <div class="admin-inventory">
+              <div class="inventory-section">
+                <h3>Inventory</h3>
+              </div>
+
+              <div class="monthly-wrapper-inventory">
+                <p>Weekly<span title="Weekly Inventory"><i class="fa-solid fa-caret-down"></i></span></p>
+                <div class="search-wrapper-inventory">
+                  <input type="text" name="admin-inventory-searchbar" class="admininventory-searchbar"
+                    placeholder="Search">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+
+              <table class="table admin-inventory-table" id="adminInventory-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Used</th>
+                    <th>Remaining</th>
+                    <th>Expiration Date</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventory-body">
+                  <tr>
+                    <td>Oral Care</td>
+                    <td>50</td>
+                    <td>P100.00</td>
+                    <td>Dental Supplies Co.</td>
+                    <td>In Stock</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <buton class="inventory-report">Report</buton>
+            </div>
+          </section>
+
+          <!-- Inventory Detail Modal -->
+          <section id="admin-inventory-detail" class="admin-inventory-detail-container">
+            <div class="admin-inventory-detail">
+              <div class="modal-inventory-detail-header">
+                <button class="close-modal-detail"
+                  onclick="document.getElementById('admin-inventory-detail').classList.remove('active')">&times;</button>
+              </div>
+              <h3>Inventory Details</h3>
+              <table class="table admin-inventory-detail-table" id="admin-inventoryDetail-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Used</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventoryDetail-body">
+                  <tr>
+                    <td>Oral Care</td>
+                    <td>Fluoride Paste</td>
+                    <td>2025-10-07</td>
+                    <td>10:30 AM</td>
+                    <td>2 Units</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
 
 
 
@@ -460,31 +630,40 @@
           </script>
 
 
-<!-------For modal---------->
+          <!-------For modal---------->
+
+
           <script>
-            // open modal
-            document.querySelectorAll('[data-target]').forEach(trigger => {
-              trigger.addEventListener('click', () => {
-                const modalId = trigger.dataset.target;
-                const modal = document.getElementById(modalId);
-                if (modal) modal.classList.add('active');
+            document.querySelectorAll('#admin-inventory-body tr').forEach(row => {
+              row.addEventListener('click', () => {
+                document.getElementById('admin-inventory-detail').classList.add('active');
               });
             });
 
-            // close modal
-            document.querySelectorAll('.close-modal').forEach(btn => {
-              btn.addEventListener('click', () => {
-                btn.closest('.admin-patient-full-info-container').classList.remove('active');
+            document.querySelector('.close-modal-detail').addEventListener('click', () => {
+              document.getElementById('admin-inventory-detail').classList.remove('active');
+            });
+
+            // 🔹 When clicking either of these sections, open the modal
+            document.querySelectorAll('.admin-patient-general-info, .admin-patient-anamnesia').forEach(section => {
+              section.addEventListener('click', () => {
+                document.getElementById('admin-patient-full-info').classList.add('active');
               });
             });
 
-            // close when clicking outside modal
-            window.addEventListener('click', e => {
-              const activeModal = document.querySelector('.admin-patient-full-info-container.active');
-              if (activeModal && e.target === activeModal) {
-                activeModal.classList.remove('active');
+            // 🔹 Close modal when clicking the close button
+            document.querySelector('.close-modal-info').addEventListener('click', () => {
+              document.getElementById('admin-patient-full-info').classList.remove('active');
+            });
+
+            // 🔹 Optional: Close modal when clicking outside its content
+            const patientModal = document.getElementById('admin-patient-full-info');
+            patientModal.addEventListener('click', e => {
+              if (e.target === patientModal) {
+                patientModal.classList.remove('active');
               }
             });
+
 
           </script>
         </div>

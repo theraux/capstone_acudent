@@ -1,3 +1,9 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+
+
 .admin-dentistprofile{
     display: flex;
     flex-direction: column;
@@ -38,6 +44,7 @@
     height: 350px;
     z-index: 1;
     cursor: pointer;
+    justify-items: center;
 }
 
 .dentist-profile-box::before{
@@ -51,7 +58,18 @@
     background-color: #F5E3CD;
     border: 1px solid #502C00;
 }
-
+.admin-dentist-picture{
+  margin-top: 20px;
+  border: 1px solid #502C00;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.admin-dentist-picture img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
 /* Search Wrapper */
 .search-wrapper-dentist {
   position: relative;
@@ -100,7 +118,7 @@
 .button-for-dentist .add-dentist:hover,
 .button-for-dentist .dentist-report:hover,
 .button-for-staff .add-staff:hover{
-    background-color: #F5E3CD;
+    background-color: #FEF3E7;
 }
 
 
@@ -126,6 +144,7 @@
     z-index: 1;
     cursor: pointer;
     margin-top: 2rem;
+    justify-items: center;
 }
 
 .staff-profile-box::before{
@@ -138,6 +157,31 @@
     width: 20px;
     background-color: #F5E3CD;
     border: 1px solid #502C00;
+}
+.admin-staff-picture{
+  margin-top: 20px;
+  border: 1px solid #502C00;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.admin-staff-picture img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.admin-dentist-info-container,
+.admin-staff-info-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #502C00;
+}
+.admin-dentist-info-container h3,
+.admin-staff-info-container h3{
+   font-weight: 500;
 }
 .button-for-staff{
     position: relative;
