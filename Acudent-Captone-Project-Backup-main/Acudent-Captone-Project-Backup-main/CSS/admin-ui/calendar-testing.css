@@ -1,0 +1,44 @@
+body{
+
+}
+:root {
+    --color-primary: #F5E3CD;   /* light beige */
+    --color-secondary: #FEF3E7; /* softer background */
+    --color-tertiary: #9E5B08;  /* accent brown */
+    --color-text: #703803;      /* main text */
+}
+.admin-appointment-scheduler-modal{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+.admin-appointmentscheduler-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 50%;
+    background-color: red;
+}
+.admin-appointment-scheduler-close{
+background: none;
+  border: none;
+  font-size: 2rem;
+  color: #502C00;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.admin-appointment-scheduler{
+    text-align: center;
+    margin-top: 2rem;
+    width: 50%;
+    border: 1px solid #502C00;
+    border-radius: 5px;
+    padding: clamp(0.75rem, 1vw, 1rem);
+}
+.admin-appointment-edit{
+
+ 
+}

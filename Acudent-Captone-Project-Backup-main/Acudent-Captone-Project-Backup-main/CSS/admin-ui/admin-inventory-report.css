@@ -1,0 +1,80 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+:root {
+    --color-primary: #F5E3CD;   /* light beige */
+    --color-secondary: #FEF3E7; /* softer background */
+    --color-tertiary: #9E5B08;  /* accent brown */
+    --color-text: #703803;      /* main text */
+}
+.admin-inventory-report{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: clamp(2rem, 10vw, 15rem);
+    width: 80%;
+    height: 100%;
+
+}
+.inventory-report-section{
+    width: 30%;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-text);
+    border-radius: 30px;
+    text-align: center;
+    padding: clamp(0.75rem, 1vw, 1rem);
+    color: var(--color-text);
+    margin-left: 30vw;
+    cursor: pointer;
+}
+.most-used-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 60px;
+  border: 1px solid #703803;
+  margin-top: 5rem;
+}
+
+.most-used-item-wrapper p {
+  margin: 0;
+}
+
+
+/* Remove header borders */
+.admin-inventory-report-table thead th {
+  border: 1px solid #502C00;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  color: #502C00;
+  background-color: #FEF3E7;
+  font-weight: 500;
+}
+
+/* Style only the data cells */
+.admin-inventory-report-table tbody td {
+  border: 1px solid #502C00; /* brown border */
+  padding: 1.2rem;
+  margin: 0;
+  gap: 0;
+  text-align: center;
+  cursor: pointer;
+  
+}
+.admin-inventory-report-table tbody {
+  border-radius: 2rem;
+}
+
+.admin-inventory-report-table {
+  margin-top: 1.5rem;
+  border-spacing: 0 10px; /* creates space between rows */
+  overflow: hidden;
+  width: 30%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, .2 );
+}
+
+.admin-inventory-report-table thead th i{
+    font-size: 12px;
+}

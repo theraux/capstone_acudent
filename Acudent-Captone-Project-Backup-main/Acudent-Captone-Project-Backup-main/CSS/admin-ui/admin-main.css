@@ -1,0 +1,20 @@
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+}
+/* Hide all sections by default */
+section {
+  display: none;
+}
+
+/* Show only the active one */
+section.active {
+  display: block;
+}
+

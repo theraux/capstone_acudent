@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Add in the <head> of your HTML -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-main.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-sidebar.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-navbar.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-dashboard.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-appoinment-scheduler.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-appointment-logs.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-patient-full-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-dentist-profile.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-dentist-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-staff-profile-info.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-inventory.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-inventory-report.css">
+  <link rel="stylesheet" href="../../CSS/admin-ui/admin-payment-history.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+
+  <title>Admin Portal</title>
+</head>
+
+<body>
+
+  <!--Navigation bar-->
+  <nav class="Navbar fixed-top">
+    <div class="top-nav">
+      <div class="container-lg d-flex justify-content-between align-items-center">
+
+        <!-- Left: Logo -->
+        <div class="mapru-logo">
+          <img src="../../Pictures/user-interface/banners-images-logo/logo.png" alt="Logo">
+        </div>
+
+        <!-- Right: Clickable Icons with Badges -->
+        <div class="d-flex align-items-center gap-4">
+
+          <!-- Message Icon -->
+          <a href="/messages" class="icon-wrapper position-relative" title="Messages">
+            <i class="fas fa-envelope"></i>
+            <span class="badge"></span>
+          </a>
+
+          <!-- Notification Icon -->
+          <a href="/notifications" class="icon-wrapper position-relative" title="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="badge"></span>
+          </a>
+
+          <!-- Profile Picture -->
+          <div class="nav-item">
+            <img id="admin-profile-pic" class="img-fluid rounded-circle" src="" alt="Profile Picture"
+              style="width: 40px; height: 40px; object-fit: cover;">
+            <h3 id="admin-display" class="ms-1" style="display: inline-block;">Dracy</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Sidebar (only visible on small screens) -->
+  <nav class="navbar d-md-none fixed-top">
+    <div class="container-fluid">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
+        ☰ Menu
+      </button>
+      <span class="navbar-text">Dracy</span>
+    </div>
+  </nav>
+
+
+
+
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+
+      <!-- Offcanvas Sidebar for Small Screens -->
+      <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="sidebarOffcanvas">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="text-center mb-4">
+            <img id="profile-pic" class="img-fluid rounded-circle mb-2 mt-5" src="" alt="Profile Picture"
+              style="width: 100px; height: 100px; object-fit: cover;">
+            <h3 id="username-display" class="mt-4 mb-5">Dracy</h3>
+          </div>
+          <nav class="nav flex-column nav-buttons">
+            <button class="btn w-100 mt-3" data-page="../../HTML/patient-ui/dashboard-clicked.html">
+              <i class="fas fa-home"></i>Dashboard
+            </button>
+            <button class="btn w-100 mt-3 " data-page="../../HTML/patient-ui/my-information-clicked.html">
+              <i class="fas fa-user"></i>My Information
+            </button>
+            <button class="btn w-100 mt-3 " data-page="../../HTML/patient-ui/appointment-clicked.html">
+              <i class="fas fa-calendar"></i>Appointments
+            </button>
+            <button class="btn btn-danger w-100 mt-5">Log out</button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Sidebar for md+ screens -->
+      <div class="container-fluid">
+        <div class="row d-flex">
+
+          <!-- Sidebar -->
+          <aside class="col-md-3 col-lg-2 d-none d-md-block p-4 sidebar mt-3">
+            <div class="text-center mb-4">
+              <img id="profile-pic" class="img-fluid rounded-circle mb-2" src="" alt="Profile Picture"
+                style="width: 100px; height: 100px; object-fit: cover; margin-top: 8rem;">
+              <h3 id="username-display" class="mt-4 mb-3">Dracy</h3>
+            </div>
+            <nav class="nav flex-column nav-buttons">
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-dashboard">
+                <i class="fas fa-home"></i> Dashboard
+              </button>
+
+              <div class="mt-2">
+                <button class="btn w-100 d-flex justify-content-start" data-bs-toggle="collapse"
+                  data-bs-target="#appointmentSubmenu" aria-expanded="false">
+                  <span class="arrow"><i class="fas fa-calendar"></i> Appointment</span>
+                  <i class="fas fa-chevron-down ms-auto"></i>
+                </button>
+
+                <div id="appointmentSubmenu" class="collapse">
+                  <button class="btn w-100" tabindex="0" data-target="admin-appointment-scheduler">
+                    <span><i class="fas fa-clock"></i> Appointment & Scheduler</span>
+                  </button>
+                  <button class="btn w-100" tabindex="0" data-target="admin-appointment-logs">
+                    <span><i class="fas fa-history"></i>Appointment Logs</span>
+                  </button>
+                </div>
+              </div>
+
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-patient-profiles">
+                <i class="fas fa-user"></i> Patient
+              </button>
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-dentistprofile">
+                <i class="fas fa-user"></i> Dentist
+              </button>
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-inventory">
+                <i class="fas fa-box"></i> Inventory
+              </button>
+              <button class="btn w-100 mt-2" tabindex="0" data-target="admin-payment-history">
+                <i class="fas fa-credit-card"></i> Payment
+              </button>
+              <button class="btn w-100 mt-2" data-page="../../HTML/patient-ui/appointment-clicked.html">
+                <i class="fas fa-user"></i> Admin
+              </button>
+              <button class="btn w-100 mt-3">Log out</button>
+            </nav>
+          </aside>
+
+
+          <!-- Dashboard -->
+          <section id="admin-dashboard" class="admin-dashboard-container p-5 mt-5">
+            <div class="admin-dashboard  p-5 mt-5">
+              <div class="admin-box text-center" role="button" tabindex="0" data-target="">
+                <h3>Patient Appointment</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center">
+                <h3>Patients</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center">
+                <h3>Dentist</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Inventory</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Payment</h3>
+                <span id="admin-count"></span>
+              </div>
+              <div class="admin-box text-center mt-2">
+                <h3>Admin</h3>
+                <span id="admin-count"></span>
+              </div>
+            </div>
+          </section>
+
+          <!---Appointment Scheduler-->
+          <section id="admin-appointment-scheduler" class="admin-appointment-container">
+            <div class="admin-appointment">
+              <div class="today-appointment">
+                <h3>Today's Appointment</h3>
+              </div>
+              <br>
+
+              <table class="table admin-appointment-type" id="admin-appointmentType-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-appointmentType-body">
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>10:00 AM</td>
+                    <td>Dr. Smith</td>
+                    <td>Confirmed</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>10:00 AM</td>
+                    <td>Dr. Smith</td>
+                    <td>Confirmed</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!------------->
+              <div class="col-12 col-md-4 admin-appointment-wrapper">
+                <div class="admin-appointment-overview-wrapper gap-3 d-flex align-items-center">
+                  <span><i class="fa-solid fa-square-check"></i></span>
+                  <div class="admin-appointment-overview">
+                    <p>Completed</p>
+                    <p><span id="admin-patients-completed" class="admin-patient-overview-p">24</span></p>
+                  </div>
+                </div>
+
+                <div class="admin-appointment-overview-wrapper gap-3 d-flex align-items-center">
+                  <span><i class="fa-solid fa-clock"></i></span>
+                  <div class="admin-appointment-overview">
+                    <p>This Month</p>
+                    <p><span id="admin-patient-thismonth" class="admin-patient-overview-p">24</span></p>
+                  </div>
+                </div>
+
+                <div class="admin-appointment-overview-wrapper gap-3 d-flex align-items-center">
+                  <span><i class="fa-solid fa-circle-xmark"></i></span>
+                  <div class="admin-appointment-overview">
+                    <p>Cancelled</p>
+                    <p><span id="admin-patient-cancelled" class="admin-patient-overview-p">24</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!---------------Modal for Completed---------------------->
+          <section id="admin-completed-modal" class="admin-completed-modal-container">
+            <div class="admin-completed-modal">
+              <div class="admin-completed-modal-header">
+                <h3>Completed Appointments</h3>
+              </div>
+
+            </div>
+          </section>
+
+          <!----Appointment Logs---->
+          <section id="admin-appointment-logs" class="admin-appointment-log-container">
+            <div class="admin-appointment-logs">
+              <div class="appointment-logs">
+                <h3>Appointment Logs</h3>
+              </div>
+              <br>
+
+              <!-- Search bar -->
+              <div class="search-wrapper">
+                <input type="text" placeholder="Search" name="admin-logs-searchbar" class="adminlogs-searchbar">
+                <i class="fas fa-search"></i>
+              </div>
+              <br>
+
+              <!-- Table for logs -->
+              <table class="table admin-logs-type" id="admin-logsType-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Patient ID</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-logsType-body">
+                  <tr>
+                    <td>John Doe</td>
+                    <td>0201111</td>
+                    <td>Adjust</td>
+                    <td>10/15/25</td>
+                    <td>Dr. Maguan</td>
+                    <td>Completed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!---Patient Profile Section-->
+          <section id="admin-patient-profiles" class="admin-patient-profiles-container">
+            <div class="admin-patient-profiles">
+              <div class="patient-profile">
+                <h3>Patient Profiles</h3>
+              </div>
+
+              <div class="search-wrapper-patient">
+                <input type="text" name="admin-patient-profiles-searchbar" class="adminpatient-searchbar"
+                  placeholder="Search">
+                <i class="fas fa-search"></i>
+              </div>
+              <br>
+              <div class="patient-profile-box-container" id="patient-list">
+                <div class="patient-profile-box" tabindex="0" data-target="admin-patientprofile-info">
+                  <div class="admin-patient-picture">
+                    <img id="patient-profileforadmin" src="profile.jpg" alt="Patient Profile Picture">
+                  </div>
+                  <div class="admin-patient-info-container">
+                    <h3 id="patient-nameforadmin">Dracy Malibu</h3>
+                    <span id="patientcpnum">090502503</span>
+                    <span id="patient-id-number">P123456789</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="admin-patientprofile-info" class="admin-patientprofiles-info-container">
+            <div class="admin-patientprofiles-info">
+              <div class="patientprofile-info">
+                <h3>Patient Profiles</h3>
+              </div>
+
+              <div class="admin-patient-info">
+                <div class="admin-patient-general-info">
+                  <h3>General Information</h3>
+                  <div class="admin-patientinfo">
+                    <p id="admin-patient-name">Name: <span id="patient-name-text"></span></p>
+                    <p id="admin-patient-birthday">Birthday: <span id="patient-birthday-text"></span></p>
+                    <p id="admin-patient-sex">Sex: <span id="patient-sex-text"></span></p>
+                    <p id="admin-patient-address">Address: <span id="patient-address-text"></span></p>
+                    <p id="admin-patient-phonenum">Phone: <span id="patient-phonenum-text"></span></p>
+                  </div>
+                </div>
+
+                <div class="admin-patient-anamnesia">
+                  <h3>Anamnesia</h3>
+                  <div class="admin-patientinfo">
+                    <p id="admin-patient-allergy">Allergy: <span id="patient-allergy-text"></span></p>
+                    <p id="admin-patient-cdisease">Chronic Disease: <span id="patient-cdisease-text"></span></p>
+                    <p id="admin-patient-btype">Blood Type: <span id="patient-btype-text"></span></p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="search-wrapper-patient-info">
+                <h3>Patient History</h3>
+
+                <div class="search-bar">
+                  <input type="text" name="admin-patient-info-searchbar" class="adminpatient-info-searchbar"
+                    placeholder="Search">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+
+              <table class="table admin-patient-history-logs" id="admin-patient-historyLogs-table">
+                <thead>
+                  <tr>
+                    <th>Date<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Services<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Price<span><i class="fa-solid fa-caret-down"></i></span></th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-patient-historyLogs-body">
+                  <td>06/15/25</td>
+                  <td>Orthodontics</td>
+                  <td>P1500.00</td>
+                  <td>dR. mAGUAN</td>
+                  <td>cOMPLETED</td>
+                  <td>Braces 1st Session</td>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+
+          <!-- Read-only Modal -->
+          <section id="admin-patient-full-info" class="admin-patient-full-info-container">
+            <div class="admin-patient-full-info">
+              <div class="modal-header">
+                <h3>General Information</h3>
+                <button class="close-modal"
+                  onclick="document.getElementById('admin-patient-full-info').classList.remove('active')">&times;</button>
+              </div>
+
+              <div class="modal-body">
+                <h4><i class="fas fa-user"></i>Personal Details</h4>
+                <div class="adminside-patientFullInfo">
+                  <p>Name: <span id="patient-name"></span></p>
+                  <p>Age: <span id="patient-age"></span></p>
+                  <p>Birthday: <span id="patient-birthday"></span></p>
+                  <p>Sex: <span id="patient-sex"></span></p>
+                  <p>Nationality: <span id="patient-nationality"></span></p>
+                </div>
+
+                <h4><i class="fa solid fa-circle-info"></i> Information</h4>
+                <div class="adminside-patientFullInfo">
+                  <p>Address: <span id="patient-address"></span></p>
+                  <p>Phone: <span id="patient-phone"></span></p>
+                  <p>Email: <span id="patient-email"></span></p>
+                </div>
+
+                <h4><i class="fa-solid fa-notes-medical"></i>Medical</h4>
+                <div class="adminside-patientFullInfo">
+                  <p>Allergy: <span id="patient-allergy"></span></p>
+                  <p>Medical Condition: <span id="patient-med-condition"></span></p>
+                  <p>Current Medications: <span id="patient-medications"></span></p>
+                  <p>Past Surgeries: <span id="patient-pastSurgeries"></span></p>
+                </div>
+
+                <h4><i class="fa-solid fa-id-card"></i>HMO Card</h4>
+                <div class="adminside-patientFullInfo">
+                  <p>HMO Provider: <span id="patient-hmoProvider"></span></p>
+                  <p>HMO ID: <span id="patient-hmoID"></span></p>
+                  <p>Valid Until: <span id="patient-hmoValid"></span></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!---Dentist Profile-->
+          <section id="admin-dentistprofile" class="admin-dentistprofile-container">
+            <div class="admin-dentistprofile">
+              <div class="dentist-profile">
+                <h3>Dentist Profile</h3>
+              </div>
+              <div class="search-wrapper-dentist">
+                <input type="text" name="admin-dentist-profiles-searchbar" class="admindentist-searchbar"
+                  placeholder="Search">
+                <i class="fas fa-search"></i>
+              </div>
+
+              <div class="dentist-box-container" id="dentist-list">
+                <div class="dentist-profile-box" tabindex="0" data-target="admin-dentist-profile-info">
+                  <div class="admin-dentist-picture">
+                    <img id="dentist-profileforadmin" src="profile.jpg" alt="Dentist Profile Picture">
+                  </div>
+                  <div class="admin-dentist-info-container">
+                    <h3 id="dentist-nameforadmin">Mapru</h3>
+                    <span id="dentistcpnum">05352344</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="button-for-dentist">
+                <button class="add-dentist" title="Add Dentist"><span><i class="fa-solid fa-plus"></i></span></button>
+                <button class="dentist-report" title="View Report">Report</button>
+              </div>
+
+            </div>
+
+            <!---------Staff Profile--------------->
+            <div class="admin-staff-profile">
+              <div class="staff-profile">
+                <h3>Staff Profile</h3>
+              </div>
+
+              <div class="staff-box-container" id="staff-list">
+                <div class="staff-profile-box" tabindex="0" data-target="admin-staff-profile-info">
+                  <div class="admin-staff-picture">
+                    <img id="staff-profileforadmin" src="profile.jpg" alt="Staff Profile Picture">
+                  </div>
+                  <div class="admin-staff-info-container">
+                    <h3 id="staff-nameforadmin">Delaihla</h3>
+                    <span id="staffcpnum">2154542</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="button-for-staff">
+                <button class="add-staff" title="Add Staff"><span><i class="fa-solid fa-plus"></i></span></button>
+              </div>
+            </div>
+          </section>
+
+
+          <!----------------Dentist Profile Information---------------------------->
+          <section id="admin-dentist-profile-info" class="dentist-profiles-section-container">
+            <div class="admin-dentist-profile-info">
+              <div class="dentist-profile">
+                <h3>Dentist Profile</h3>
+              </div>
+
+              <div class="dentist-information-container">
+                <div class="dentistprofile">
+
+                  <img id="dentist-profilepic" src="profile.jpg" alt="Dentist Profile Picture">
+                  <p id="dentist-name-profile">Dr. Juan Dela Cruz</p>
+                </div>
+                <br>
+                <hr>
+
+                <div class="dentist-information">
+                  <h3>Personal Information</h3>
+                  <div class="info-grid">
+                    <p>Name: <span id="admin-dentist-name">Juan Dela Cruz</span></p>
+                    <p>Contact No.: <span id="admin-dentist-number">0912-345-6789</span></p>
+                    <p>Email: <span id="admin-dentist-email">juan@example.com</span></p>
+                    <p>Address: <span id="admin-dentist-address">Cebu City, Philippines</span></p>
+                  </div>
+
+                  <h3>Professional Details</h3>
+                  <div class="info-grid">
+                    <p>Certificate: <span id="admin-dentist-certificate">PRC Certified</span></p>
+                    <p>License No: <span id="admin-dentist-license-no">D1234567</span></p>
+                    <p>Years of Experience: <span id="admin-dentist-yearsofexp">10</span></p>
+                    <p>Specialization: <span id="admin-dentist-specialization">Orthodontics</span></p>
+                  </div>
+
+                  <h3>Work Schedule</h3>
+                  <div class="info-grid"></div>
+                </div>
+                <button class="admin-edit-dentist"
+                  onclick="document.getElementById('admin-dentist-profile-section').classList.remove('active')">
+                  Edit
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-------------Staff Profile Information---------------------->
+          <section id="admin-staff-profile-info" class="admin-staff-profiles-info-container">
+            <div class="admin-staff-profile-info">
+              <div class="staff-profile">
+                <h3>Staff Profile</h3>
+              </div>
+
+              <div class="staff-information-container">
+                <div class="staffprofile">
+                  <img id="staff-profile-pic" src="profile.jpg" alt="staff-profile-pic">
+                  <p id="staff-name-profile"></p>
+                </div>
+                <br>
+                <hr>
+                <div class="staff-information">
+                  <h3>Personal Information</h3>
+                  <div class="staff-grid">
+                    <p>Name: <span id="admin-staff-name"> </span></p>
+                    <p>Contact: <span id="admin-staff-contact"></span></p>
+                    <p>Email: <span id="admin-staff-email"></span></p>
+                    <p>Address: <span id="admin-staff-address"></span></p>
+                  </div>
+
+                  <h3>Work Schedule</h3>
+                  <div class="staff-grid">
+                  </div>
+                  <button class="admin-edit-staff"
+                    onclick="document.getElementById('admin-staff-profile-section').classList.remove('active')">Edit</button>
+
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!----------------Inventory Section------------------------------->
+          <section id="admin-inventory" class="admin-inventory-container">
+            <div class="admin-inventory">
+              <div class="inventory-section">
+                <h3>Inventory</h3>
+              </div>
+
+              <div class="monthly-wrapper-inventory">
+                <p>Weekly<span title="Weekly Inventory"><i class="fa-solid fa-caret-down"></i></span></p>
+                <div class="search-wrapper-inventory">
+                  <input type="text" name="admin-inventory-searchbar" class="admininventory-searchbar"
+                    placeholder="Search">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+
+              <table class="table admin-inventory-table" id="adminInventory-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Used</th>
+                    <th>Remaining</th>
+                    <th>Expiration Date</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventory-body">
+                  <tr>
+                    <td>Oral Care</td>
+                    <td>50</td>
+                    <td>P100.00</td>
+                    <td>Dental Supplies Co.</td>
+                    <td>In Stock</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="inventory-report" tabindex="0" data-target="admin-inventory-report">Report</button>
+            </div>
+          </section>
+
+          <!-- Inventory Detail Modal -->
+          <section id="admin-inventory-detail" class="admin-inventory-detail-container">
+            <div class="admin-inventory-detail">
+              <div class="modal-inventory-detail-header">
+                <button class="close-modal-detail"
+                  onclick="document.getElementById('admin-inventory-detail').classList.remove('active')">&times;</button>
+              </div>
+              <h3>Inventory Details</h3>
+              <table class="table admin-inventory-detail-table" id="admin-inventoryDetail-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Used</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventoryDetail-body">
+                  <tr>
+                    <td>Oral Care</td>
+                    <td>Fluoride Paste</td>
+                    <td>2025-10-07</td>
+                    <td>10:30 AM</td>
+                    <td>2 Units</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+
+          <!--------------Inventory Report--------------------->
+          <section id="admin-inventory-report" class="admin-inventory-repot-container">
+            <div class="admin-inventory-report">
+              <div class="inventory-report-section">
+                <h3>Weekly Report <span><i class="fas fa-caret-down"></i></span></h3>
+              </div>
+              <div class="most-used-item-wrapper">
+
+                <p>Most Used Item</p>
+
+              </div>
+
+              <table class="table admin-inventory-report-table" id="admin-inventoryReport-table">
+                <thead>
+                  <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Used</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventoryReport-body">
+                  <tr>
+                    <td>Oral Care</td>
+                    <td>50</td>
+                    <td>12</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!---------------Admin Payment History--------------------->
+
+          <section id="admin-payment-history" class="admin-payments-history-container">
+            <div class="admin-payment-history">
+              <div class="payment-history-section">
+                <h2>Payment</h2>
+              </div>
+
+              <div class="payment-weekly-history-wrapper">
+                <p>Weekly<span><i class="fas fa-caret-down" title="Weekly Report"></i></span></p>
+                <div class="search-wrapper-payment">
+                  <input type="text" name="admin-payment-searchbar" class="adminpayment-searchbar" placeholder="Search">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <table class="table admin-payment-history-table" id="admin-paymentHistory-table">
+                <thead>
+                  <tr>
+                    <th>Patient Name</th>
+                    <th>Patient ID</th>
+                    <th>Date</th>
+                    <th>Service</th>
+                    <th>Payment</th>
+                    <th>HMO</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-paymentHistory-body">
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>2025-06-15</td>
+                    <td>P1500.00</td>
+                    <td>Credit Card</td>
+                    <td>Completed</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="payment-report" tabindex="0" data-target="admin-payment-report"
+                title="Payment Report">Report</button>
+            </div>
+          </section>
+
+
+
+          <!---------------Admin admin side-------------------------->
+
+          <section id="admin-admin-side" class="admin-adminside-container">
+            <div class="admin-admin-side">
+              <div class="admin-side-section">
+                <div class="admin-profilepic-container">
+                  <img id="admin-profilepic" src="profile.jpg" alt="Admin Profile Picture">
+                </div>
+
+              </div>
+          </section>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const boxes = document.querySelectorAll(".admin-box");
+              const buttons = document.querySelectorAll("[data-target]"); // sidebar buttons
+              const sections = document.querySelectorAll("section");
+
+
+              // Default: show dashboard
+              document.getElementById("admin-dashboard").classList.add("active");
+
+              buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                  const targetId = btn.getAttribute("data-target");
+
+                  // Skip if no target (e.g., logout button)
+                  if (!targetId) return;
+
+                  // Hide all sections
+                  sections.forEach(sec => sec.classList.remove("active"));
+
+                  // Show the selected section
+                  document.getElementById(targetId).classList.add("active");
+                });
+              });
+            });
+          </script>
+
+
+          <!-------For modal---------->
+
+
+          <script>
+            document.querySelectorAll('#admin-inventory-body tr').forEach(row => {
+              row.addEventListener('click', () => {
+                document.getElementById('admin-inventory-detail').classList.add('active');
+              });
+            });
+
+            document.querySelector('.close-modal-detail').addEventListener('click', () => {
+              document.getElementById('admin-inventory-detail').classList.remove('active');
+            });
+
+            // 🔹 When clicking either of these sections, open the modal
+            document.querySelectorAll('.admin-patient-general-info, .admin-patient-anamnesia').forEach(section => {
+              section.addEventListener('click', () => {
+                document.getElementById('admin-patient-full-info').classList.add('active');
+              });
+            });
+
+            // 🔹 Close modal when clicking the close button
+            document.querySelector('.close-modal-info').addEventListener('click', () => {
+              document.getElementById('admin-patient-full-info').classList.remove('active');
+            });
+
+            // 🔹 Optional: Close modal when clicking outside its content
+            const patientModal = document.getElementById('admin-patient-full-info');
+            patientModal.addEventListener('click', e => {
+              if (e.target === patientModal) {
+                patientModal.classList.remove('active');
+              }
+            });
+          </script>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

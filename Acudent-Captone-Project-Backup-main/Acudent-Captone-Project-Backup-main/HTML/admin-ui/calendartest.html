@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bootstrap Calendar Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+        
+        :root {
+            --color-primary: #F5E3CD; /* light beige */
+            --color-secondary: #FEF3E7; /* softer background */
+            --color-tertiary: #9E5B08; /* accent brown */
+            --color-text: #502C00; /* main text */
+        }
+        
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8f9fa; padding: 20px; }
+        
+        /* Modern Bootstrap Calendar Styles (Same as before, but complete) */
+        .modern-calendar {
+            background-color: var(--color-secondary);
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            transition: box-shadow 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .modern-calendar:hover {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .modern-calendar .card-header {
+            background-color: var(--color-secondary);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        .modern-calendar .card-title {
+            color: var(--color-tertiary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .calendar-nav .btn {
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            color: var(--color-text);
+            border-color: var(--color-primary);
+        }
+
+        .calendar-nav .btn:hover {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-grid {
+            max-height: 450px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-primary) var(--color-secondary);
+        }
+
+        .calendar-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .calendar-grid::-webkit-scrollbar-thumb {
+            background-color: var(--color-primary);
+            border-radius: 3px;
+        }
+
+        .calendar-header {
+            background-color: var(--color-primary);
+            margin: 0;
+        }
+
+        .calendar-header .col {
+            padding: 0.75rem 0;
+            color: var(--color-tertiary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calendar-days {
+            background-color: #fff;
+        }
+
+        .calendar-day {
+            position: relative;
+            min-height: 80px;
+            padding: 0.5rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .calendar-day:hover {
+            background-color: var(--color-secondary);
+            border-color: var(--color-primary);
+            transform: scale(1.02);
+        }
+
+        .calendar-day.other-month {
+            background-color: #f8f9fa;
+            color: #adb5bd;
+        }
+
+        .calendar-day.today {
+            background-color: var(--color-tertiary) !important;
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.today:hover {
+            background-color: #8a4a06;
+        }
+
+        .calendar-day.has-event {
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .calendar-day .day-number {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .calendar-day.other-month .day-number {
+            color: #adb5bd;
+        }
+
+        .calendar-day .event {
+            font-size: 0.75rem;
+            margin: 0.25rem 0 0 0;
+            padding: 0.25rem 0.5rem;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            border-radius: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .calendar-day .event-time {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .no-events {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .calendar-grid { max-height: 350px; }
+            .calendar-day { min-height: 60px; padding: 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Modern Bootstrap Calendar</h2>
+        <!-- Modern Bootstrap Calendar -->
+        <div class="modern-calendar" id="modernCalendar">
+            <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-0">
+                <h5 class="card-title mb-0 text-primary" id="calendarTitle">October 2023</h5>
+                <div class="calendar-nav">
+                    <button class="btn btn-outline-primary btn-sm me-2" id="prevMonth" aria-label="Previous Month">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" id="todayBtn" aria-label="Go to Today">Today</button>
+                    <button class="btn btn-outline-primary btn-sm ms-2" id="nextMonth" aria-label="Next Month">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="calendar-grid">
+                    <!-- Days of Week Header -->
+                    <div class="row g-0 calendar-header">
+                        <div class="col text-center fw-bold text-tertiary">Sun</div>
+                        <div class="col text-center fw-bold text-tertiary">Mon</div>
+                        <div class="col text-center fw-bold text-tertiary">Tue</div>
+                        <div class="col text-center fw-bold text-tertiary">Wed</div>
+                        <div class="col text-center fw-bold text-tertiary">Thu</div>
+                        <div class="col text-center fw-bold text-tertiary">Fri</div>
+                        <div class="col text-center fw-bold text-tertiary">Sat</div>
+                    </div>
+                    <!-- Days Grid (Populated by JS) -->
+                    <div class="row g-0 calendar-days" id="calendarDays"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Fixed JavaScript (Uses window.onload for reliability, defines events internally) -->
+    <script>
+        // Sample dental appointments (defined inside JS to avoid global issues)
+        const sampleEvents = [
+            { date: '2023-10-15', title: '🦷 Cleaning Appointment', time: '10:00 AM', color: 'var(--color-primary)' },
+            { date: '2023-10-20', title: '💬 Follow-up Consultation', time: '2:00 PM', color: 'var(--color-tertiary)' },
+            { date: '2023-10-25', title: '📅 X-Ray Scheduled', time: '11:30 AM', color: 'var(--color-primary)' }
+        ];
+
+        // Modern Bootstrap Calendar JS (Fixed for reliability)
+        window.addEventListener('load', function() {  // Use 'load' to wait for everything
+            const calendar = {
+                currentDate: new Date(),
+                events: sampleEvents,
+                
+                init: function() {
+                    this.render();
+                    this.attachEvents();
+                },
+                
+                render: function() {
+                    const year = this.currentDate.getFullYear();
+                    const month = this.currentDate.getMonth();
+                    const today = new Date();
+                    
+                    document.getElementById('calendarTitle').textContent = this.currentDate.toLocaleDateString('en-US', { 
+                        year: 'numeric', month: 'long' 
+                    });
+                    
+                    const firstDay = new Date(year, month, 1);
+                    const lastDay = new Date(year, month + 1, 0);
+                    const startDate = new Date(firstDay);
+                    startDate.setDate(startDate.getDate() - firstDay.getDay()); // Start from Sunday
+                    
+                    let daysHtml = '';
+                    const daysContainer = document.getElementById('calendarDays');
+                    
+                    for (let i = 0; i < 42; i++) { // 6 weeks max
+                        const date = new Date(startDate);
+                        date.setDate(startDate.getDate() + i);
+                        
+                        const dayNum = date.getDate();
+                        const isCurrentMonth = date.getMonth() === month;
+                        const isToday = date.toDateString() === today.toDateString();
+                        const dayEvents = this.events.filter(event => 
+                            new Date(event.date).toDateString() === date.toDateString()
+                        );
+                        
+                        let dayClass = 'col calendar-day';
+                        if (!isCurrentMonth) dayClass += ' other-month';
+                        if (isToday) dayClass += ' today';
+                        if (dayEvents.length > 0) dayClass += ' has-event';
+                        
+                        let eventHtml = '';
+                        if (dayEvents.length > 0) {
+                            dayEvents.slice(0, 2).forEach(event => { // Show up to 2 events
+                                eventHtml += `
+                                    <div class="event" style="background-color: ${event.color};">
+                                        <div>${event.title}</div>
+                                        <div class="event-time">${event.time}</div>
+                                    </div>
+                                `;
+                            });
+                            if (dayEvents.length > 2) {
+                                eventHtml += `<div class="event" style="background-color: var(--color-secondary);">+${dayEvents.length - 2} more</div>`;
+                            }
+                        } else if (isCurrentMonth) {
+                            eventHtml = '<div class="no-events">No appointments</div>';
+                        }
+                        
+                        daysHtml += `
+                            <div class="${dayClass}" data-date="${date.toISOString().split('T')[0]}" aria-label="Day ${dayNum}, ${!isCurrentMonth ? 'Previous/Next ' : ''}Month">
+                                <div class="day-number">${dayNum}</div>
+                                ${eventHtml}
+                            </div>
+                        `;
+                    }
+                    
+                    daysContainer.innerHTML = daysHtml;
+                    console.log('Calendar rendered successfully!'); // Debug log
+                },
+                
+                attachEvents: function() {
+                    document.getElementById('prevMonth').addEventListener('click', () => {
+                        this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+                        this.render();
+                    });
+                    
+                    document.getElementById('nextMonth').addEventListener('click', () => {
+                        this.currentDate.setMonth(this.currentDate.gzetMonth() + 1);
+                        this.render();
+                    });
+                    
+                    document.getElementById('todayBtn').addEventListener('click', () => {
+                        this.currentDate = new Date();
+                        this.render();
+                    });
+                    
+                    // Click on day
+                    document.getElementById('calendarDays').addEventListener('click', (e) => {
+                        if (e.target.closest('.calendar-day')) {
+                            const day = e.target.closest('.calendar-day');
+                            const date = day.dataset.date;
+                            alert(`Selected date: ${date}`); // Replace with modal
+                        }
+                    });
+                }
+            };
+            
+            calendar.init();
+        });
+    </script>
+</body>
+</html>
