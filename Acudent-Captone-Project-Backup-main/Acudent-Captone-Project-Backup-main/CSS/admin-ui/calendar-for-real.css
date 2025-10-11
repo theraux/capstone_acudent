@@ -1,0 +1,214 @@
+body{
+
+}
+:root {
+    --color-primary: #F5E3CD;   /* light beige */
+    --color-secondary: #FEF3E7; /* softer background */
+    --color-tertiary: #9E5B08;  /* accent brown */
+    --color-text: #703803;      /* main text */
+}
+.admin-appointment-title-wrapper{
+    color: var(--color-text);
+}
+.admin-appointment-prev-next-month{
+    display: flex;
+   justify-content: space-between;
+    color: var(--color-text);
+    border: none;
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;  
+    background-color: var(--color-secondary);
+}
+.admin-appointment-prev-next-month button{
+    border: none;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+.admin-appointment-edit-schedule{
+    text-align: center;
+    margin-left: auto;
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    padding: 0.8rem;
+    width: 80px;
+}
+.admin-calendar-appointments-container-row{
+    width: 100%;
+    justify-content: center;
+}
+.name-of-the-day{
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    padding: 1rem;
+    justify-content: center;
+    width: 100%;
+    font-weight: 600;
+}
+.admin-calendar-days{
+   text-align: center;
+
+}
+.number-of-days{
+    justify-content: center;
+    text-align: center;
+    width: 100%;    
+}
+.number-of-days p{
+    text-align: center;
+}
+.admin-calendar-box{
+    width: 100%;
+    height: 120px;
+    border: var(--color-text) 1px solid;
+    cursor: pointer;
+}
+.admin-calendar-box:hover{
+    background-color: var(--color-secondary);
+}
+ .admin-calendar-box.prev-month {
+            opacity: 0.5;
+            color: var(--color-text);
+        }
+        .admin-calendar-box.next-month {
+            opacity: 0.5;
+            color: var(--color-text);
+        }
+        .admin-calendar-box.current-month {
+            opacity: 1;
+            color: var(--color-text); /* Full opacity for current month */
+        }
+        .admin-calendar-box.today {
+            background-color: #F5E3CD !important; /* Highlight today's date with blue background */
+            font-weight: bold;
+           
+        }
+        .admin-calendar-box.today:hover{
+            background-color: var(--color-secondary)!important;
+        }
+        .admin-calendar-box:empty {
+            /* Ensure empty boxes (if any) are invisible */
+            visibility: hidden;
+        }
+
+
+        /* Modal for edit appointment */
+.admin-edit-appointment-schedule-container{
+position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* full viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* backdrop */
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center; /* centers vertically */
+    z-index: 1000;
+}
+.admin-edit-appointment-schedule-container.active {
+    display: flex; /* show when active */
+}
+.admin-edit-appointment-schedule-modal{
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    width: 50%;
+    height: auto;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease;
+    position: relative;
+    justify-items:center ;
+}
+.edit-appointment-schedule-title{
+    margin-top: 1rem;
+    padding: 1rem;
+    width: 50%;
+    border: 1px solid var(--color-text);
+    border-radius: 15px;
+    text-align: center;
+    color: var(--color-text);
+}
+.btn-close-edit-appointment-schedule {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+.admin-edit-appointment-schedule-wrapper-row{
+    margin-top: 2rem;
+}
+/* === Box Wrapper === */
+.admin-edit-appointment {
+    position: relative;
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #fff;
+    color: var(--color-text);
+    text-align: center;
+    display: flex;
+    align-items: center; /* vertically center label text */
+    justify-content: center;
+    margin-top: 0.8rem;
+}
+
+/* Top accent border */
+.admin-edit-appointment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background-color: var(--color-text);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* === Input styling === */
+.admin-edit-appointment input[type="date"],
+.admin-edit-appointment input[type="time"],
+.admin-edit-appointment input[type="text"] {
+    width: 100%;
+    height: 72px;
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #fff;
+    color: var(--color-text);
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin: 0; /* remove extra spacing */
+}
+
+/* Remove extra padding only for input containers */
+.admin-edit-appointment:has(input) {
+    padding: 0; /* Remove padding for input boxes only */
+}
+
+.admin-edit-appointment input:focus {
+    outline: none;
+    border-color: var(--color-tertiary);
+    box-shadow: 0 0 4px var(--color-tertiary);
+}
+
+.admin-save-appointmentbtn{
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    margin: 3rem auto 0;
+    width: 20%;
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    padding: .8rem;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

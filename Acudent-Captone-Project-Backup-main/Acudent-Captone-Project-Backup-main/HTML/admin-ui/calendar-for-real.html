@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/admin-ui/calendar-for-real.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <section class="admin-calendar-appointment-section" id="admin-calendar-appointments-section">
+        <div class="admin-calendar-appointments-wrapper">
+            <div class="admin-appointment-title-wrapper">
+                <h2>Appointments</h2>
+                <div class="admin-appointment-prev-next-month">      
+                    <button onclick="prevmonth()" class="btn-month" id="btn-previous-month"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h3 id="month-year"></h3>
+                    <button onclick="nextmonth()" class="btn-month" id="btn-next-month"><i class="fa-solid fa-chevron-right"></i></button>
+               <div class="admin-appointment-edit-schedule">
+                    <button class="admin-edit-sched" id="edit-schedule" title="Edit Appointment" tabindex="0" data-target="admin-edit-appointment-schedule">Edit</button>
+                </div>
+                </div>
+            </div>
+
+            <div class="row admin-calendar-appointments-container-row row-cols-1"
+                id="admin-calendar-appointments-container">
+                <!-- Appointment items will be dynamically added here -->
+                <div class="col name-of-the-day">
+                    <div class="row row-cols-7">
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Sun</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Mon</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Tue</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Wed</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Thu</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Fri</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-calendar-days">
+                                <p>Sat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col number-of-days">
+                    <!-- Days will be dynamically generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <section id="admin-edit-appointment-schedule" class="admin-edit-appointment-schedule-container">
+        <div class="admin-edit-appointment-schedule-modal">
+            <div class="admin-edit-appointment-schedule-close">
+                <button class="btn-close-edit-appointment-schedule">x</button>
+            </div>
+            <div class="edit-appointment-schedule-title">
+                <h3>Appointment Availability</h3>
+            </div>
+
+            <div class="row admin-edit-appointment-schedule-wrapper-row row-cols-1">
+                <div class="col">
+                    <div class="row row-cols-1 row-cols-lg-2 row-cols-md-2">
+                        <div class="col">
+                            <div class="admin-edit-appointment">
+                                <h3>Appointment Date</h3>
+                            </div>    
+                        </div>
+                        <div class="col">
+                            <div class="admin-edit-appointment">
+                                <input type="date" id="admin-edit-appointment-date" name="admin-edit-appointment-date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row row-cols-1 row-cols-lg-2 row-cols-md-2">
+                        <div class="col">
+                            <div class="admin-edit-appointment">
+                                <h3>Appointment Time</h3>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="admin-edit-appointment">
+                                <input type="time" id="admin-edit-appointment-time" name="admin-edit-appointment-time"
+                                placeholder="Time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <button id="admin-save-appointment-btn" class="admin-save-appointmentbtn">Save</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        let currentDate = new Date();
+        const today = new Date(); // Fixed today for highlighting
+
+        function renderCalendar() {
+            let year = currentDate.getFullYear();
+            let month = currentDate.getMonth();
+            document.getElementById('month-year').innerText = months[month] + ' ' + year;
+
+            let firstDayOfWeek = new Date(year, month, 1).getDay(); // 0 = Sunday
+            let daysInMonth = new Date(year, month + 1, 0).getDate();
+            let daysInPrevMonth = new Date(year, month, 0).getDate();
+            let totalSlots = firstDayOfWeek + daysInMonth; // Slots needed for current + padding
+            let numRows = Math.ceil(totalSlots / 7); // Dynamic rows (up to 6)
+
+            let daysContainer = document.querySelector('.number-of-days');
+            daysContainer.innerHTML = ''; // Clear previous content
+
+            let nextDayCounter = 1; // For next month's days
+
+            for (let row = 0; row < numRows; row++) {
+                let rowDiv = document.createElement('div');
+                rowDiv.className = 'row row-cols-7 g-0';
+
+                for (let col = 0; col < 7; col++) {
+                    let cellIndex = row * 7 + col;
+                    let colDiv = document.createElement('div');
+                    colDiv.className = 'col';
+
+                    let box = document.createElement('div');
+                    box.className = 'admin-calendar-box';
+
+                    if (cellIndex < firstDayOfWeek) {
+                        // Previous month's trailing days (grayed out)
+                        let prevDay = daysInPrevMonth - (firstDayOfWeek - 1 - cellIndex);
+                        box.textContent = prevDay;
+                        box.classList.add('prev-month');
+                    } else if (cellIndex < firstDayOfWeek + daysInMonth) {
+                        // Current month's days (full opacity)
+                        let day = cellIndex - firstDayOfWeek + 1;
+                        box.textContent = day;
+                        box.classList.add('current-month');
+
+                        // Highlight today's date if it matches the current view
+                        if (day === today.getDate() &&
+                            month === today.getMonth() &&
+                            year === today.getFullYear()) {
+                            box.classList.add('today');
+                        }
+                    } else {
+                        // Next month's leading days (grayed out, continuous numbering)
+                        box.textContent = nextDayCounter;
+                        box.classList.add('next-month');
+                        nextDayCounter++;
+                    }
+
+                    colDiv.appendChild(box);
+                    rowDiv.appendChild(colDiv);
+                }
+
+                daysContainer.appendChild(rowDiv);
+            }
+        }
+
+        function prevmonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        }
+
+        function nextmonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        }
+
+        // Initialize the calendar on load
+        renderCalendar();
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const editButton = document.getElementById("edit-schedule");
+    const modal = document.getElementById("admin-edit-appointment-schedule");
+    const closeButton = document.querySelector(".btn-close-edit-appointment-schedule");
+
+    // Open the modal
+    editButton.addEventListener("click", () => {
+        modal.classList.add("active"); // add active class to show modal
+    });
+
+    // Close the modal when clicking the "x" button
+    closeButton.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    // Close modal when clicking outside the modal box
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.classList.remove("active");
+        }
+    });
+});
+
+    </script>
+</body>
+
+</html>
