@@ -2,6 +2,12 @@ body{
   overflow-x: hidden;
 }
 
+:root {
+    --color-primary: #F5E3CD;   /* light beige */
+    --color-secondary: #FEF3E7; /* softer background */
+    --color-tertiary: #9E5B08;  /* accent brown */
+    --color-text: #703803;      /* main text */
+}
 .admin-appointment {
   display: flex;
   flex-direction: column;
@@ -106,6 +112,59 @@ body{
     font-size: 1.5rem; /* Adjust header font size */
   }
 }
+/* Card box */
+.admin-appointment-wrapper{
+  margin-top: 2rem;
+  display: flex;
+  gap: 5rem;
+  margin-left:40vw ;
+  width: 100%;
+  justify-content: center;
+  height: 15vh;
+}
+.admin-appointment-overview-wrapper{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+
+ 
+}
+.admin-appointment-overview-wrapper .fa-square-check{
+  font-size: 4rem;
+  color: green;
+  font-weight: bold;
+
+}
+.admin-appointment-overview-wrapper .fa-clock{
+  font-size: 4rem;
+  color: var(--color-tertiary);
+  font-weight: bold;
+  border: solid 2px var(--color-text);
+  border-radius: 50%;
+}
+.admin-appointment-overview-wrapper .fa-circle-xmark{
+  font-size: 4rem;
+  color: red;
+  font-weight: bold;
+}
+.admin-appointment-overview{
+  color: var(--color-text);
+  font-size: 1.2rem;
+  text-align: center;
+  
+
+}
+.admin-appointment-overview p{
+  margin: 0%;
+  font-size: 1.4rem;
+
+}
+.admin-patient-overview-p{
+  font-weight: 800;
+}
+
 
 /* For devices with width less than or equal to 768px (tablets and smaller screens) */
 @media (max-width: 768px) {

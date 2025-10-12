@@ -9,7 +9,6 @@ body{
     margin-top: clamp(2rem, 10vw, 15rem);
     width: 80%;
     height: 100%;
-
 }
 .inventory-section{
     width: 30%;
@@ -73,7 +72,7 @@ body{
 .admin-inventory-table thead th {
   border: 1px solid #502C00;
   text-align: center;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem;
   font-size: 1.2rem;
   color: #502C00;
   background-color: #FEF3E7;
