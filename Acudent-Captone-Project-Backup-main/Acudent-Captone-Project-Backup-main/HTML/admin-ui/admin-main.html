@@ -233,7 +233,7 @@
                 </tbody>
               </table>
 
-              
+
 
               <!------Cards------->
               <div class="col-12 col-md-4 admin-appointment-wrapper">
@@ -394,17 +394,42 @@
                   </tr>
                 </thead>
                 <tbody id="admin-patient-historyLogs-body">
-                  <td>06/15/25</td>
-                  <td>Orthodontics</td>
-                  <td>P1500.00</td>
-                  <td>dR. mAGUAN</td>
-                  <td>cOMPLETED</td>
-                  <td>Braces 1st Session</td>
+                  <tr>
+                    <td>06/15/25</td>
+                    <td>Orthodontics</td>
+                    <td>P1500.00</td>
+                    <td>dR. mAGUAN</td>
+                    <td>cOMPLETED</td>
+                    <td>Braces 1st Session</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </section>
 
+          <!---------------------------Modal for Patient History----------------------------------------->
+          <section id="admin-patient-detailed-history" class="admin-patient-detail-history-container">
+            <div class="admin-patient-detailed-history">
+              <div class="admin-patient-detailed-history-title">
+                <h3>Patient History</h3>
+                <button class="patient-detailed-history-close-btn">&times;</button>
+              </div>
+
+              <div class="patient-history-remarks-modal">
+                 <h3>Remarks</h3>
+                <div class="patient-history-remarks-wrapper">
+                  <div class="patient-history-remarks">
+
+                  </div>
+                </div>
+                <h3>Notes</h3>
+                <div class="patient-history-notes-wrapper">
+                  <div class="patient-history-notes">
+
+                  </div>
+                </div>
+              </div>
+          </section>
 
           <!-- Read-only Modal -->
           <section id="admin-patient-full-info" class="admin-patient-full-info-container">
@@ -791,6 +816,19 @@
               document.getElementById('admin-inventory-detail').classList.remove('active');
             });
 
+             // Open modal when any row is clicked
+            document.querySelectorAll('#admin-patient-historyLogs-body tr').forEach(row => {
+              row.addEventListener('click', () => {
+
+                document.getElementById('admin-patient-detailed-history').classList.add('active');
+              });
+            });
+
+            // Close modal when the close button is clicked
+            document.querySelector('.patient-detailed-history-close-btn').addEventListener('click', () => {
+              document.getElementById('admin-patient-detailed-history').classList.remove('active');
+            });
+
             // 🔹 When clicking either of these sections, open the modal
             document.querySelectorAll('.admin-patient-general-info, .admin-patient-anamnesia').forEach(section => {
               section.addEventListener('click', () => {
@@ -810,9 +848,18 @@
                 patientModal.classList.remove('active');
               }
             });
+
+
+           
           </script>
 
+    
 
+          <script>
+            const remarksContainer = document.querySelector(".patient-history-remarks");
+            remarksContainer.innerHTML = "<p>Loading dentist remarks...</p>";
+
+          </script>
         </div>
       </div>
 
